@@ -20,7 +20,7 @@ def usage():
     print('write_rf_config')
     print('MARC record selection for Researcher Format')
     print('========================================')
-    print('This utility prepare config files for selection of MARC records ')
+    print('This utility prepares config files for selection of MARC records ')
     print('to convert to Researcher Format')
     print('Correct syntax is:')
     print('write_rf_config -r REQUEST_PATH [OPTIONS]\n')
