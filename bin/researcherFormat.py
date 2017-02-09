@@ -18,7 +18,7 @@ def usage():
     print('researcherFormat')
     print('MARC record conversion for Researcher Format')
     print('========================================')
-    print('This program transforms a file of MARC records to Researcher Format')
+    print('This utility transforms a file of MARC records to Researcher Format')
     print('Correct syntax is:')
     print('researcherFormat -i MARC_PATH -r REQUEST_PATH -o OUTPUT_FOLDER [OPTIONS]\n')
     print('\nConvert MARC_PATH to Researcher Format with parameters set in REQUEST_PATH.')
