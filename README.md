@@ -1,6 +1,10 @@
 # marc2rf
 Tools for converting MARC records to Researcher Format 
 
+## Requirements
+
+Requires the regex module from https://bitbucket.org/mrabarnett/mrab-regex. The built-in re module is not sufficient.
+
 ## Installation
 
 From GitHub:
