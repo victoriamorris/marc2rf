@@ -1,3 +1,5 @@
+![reform_logo](https://cloud.githubusercontent.com/assets/25346275/22784940/00e54ccc-eeca-11e6-80cd-4d003e7e5361.png)
+
 # marc2rf
 Tools for converting MARC records to Researcher Format 
 
