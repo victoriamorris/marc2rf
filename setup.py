@@ -27,7 +27,8 @@ except:
 # List requirements.
 # All other requirements should all be contained in the standard library
 requirements = [
-    'py2exe'
+    'py2exe',
+    'regex'
 ]
 
 # Setup
