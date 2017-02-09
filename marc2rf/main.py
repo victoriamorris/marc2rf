@@ -57,7 +57,7 @@ class Output:
                 'IL': 'ISSN-L',
                 'IM': 'International Standard Music Number (ISMN)',
                 'IR': 'International Standard Recording Code (ISRC)',  # NEW
-                'IA': 'International Article Number (IAN)',   # NEW
+                'IA': 'International Article Number (EAN)',   # NEW
                 'PN': 'Publisher number',
                 'AA': 'Name',
                 'AD': 'Dates associated with name',
@@ -646,7 +646,7 @@ class Converter(object):
             # 024
             # IM    # International Standard Music Number (ISMN)
             # IR    # International Standard Recording Code (ISRC)
-            # IA    # International Article Number (IAN)
+            # IA    # International Article Number (EAN)
             for field in record.get_fields('024'):
                 if field.indicator1 in ['0', '2', '3']:
                     for subfield in field.get_subfields('a'):
