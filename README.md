@@ -48,7 +48,7 @@ This utility transforms a file of MARC records to Researcher Format.
     Convert MARC_PATH to Researcher Format with parameters set in REQUEST_PATH.
     
     If REQUEST_PATH is not specified you will be given the option to set parameters for the output.
-    Depending upon the parameters set in REQUEST_PATH, or input by the user,
+    Depending upon the parameters set in REQUEST_PATH, or input by the user, 
     some or all of the following files will be created:
         * records.csv
         * names.csv
@@ -72,3 +72,11 @@ This utility transforms a file of MARC records to Researcher Format.
       --debug   Debug mode.
       --help    Show help message and exit.       
     
+    Output files differ for FRBRization and MARC field options.
+
+
+### Notes
+ 
+The file specified in REQUEST_PATH must be an Outlook message submitted via the online form http://www.mappamorris.co.uk/researcherFormat/RFdatasetrequest.php and saved in the format 'Outlook Messafe Format - Unicode (*.msg)'
+
+MARC input files must have .lex file extensions.
