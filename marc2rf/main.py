@@ -193,37 +193,39 @@ class Output:
             ])
         elif profile == 'E':
             self.values = OrderedDict([
-                ('ID', True), ('ES', True), ('RT', True), ('AA', True), ('AD', True), ('AT', True), ('AR', True),
-                ('AN', True), ('TT', True), ('PC', True), ('PP', True), ('PB', True), ('PD', True), ('DS', True),
-                ('SU', True), ('LA', True), ('NN', True), ('PV', True), ('RF', True),
+                ('ES', True), ('RT', True), ('AA', True), ('AD', True), ('AT', True), ('AR', True), ('AN', True),
+                ('TT', True), ('PC', True), ('PP', True), ('PB', True), ('PD', True), ('DS', True), ('SU', True),
+                ('LA', True), ('NN', True), ('PV', True), ('RF', True),
                 # END OF FIELDS USED BY THIS PROFILE
-                ('CT', False), ('MT', False), ('BN', False), ('LC', False), ('OC', False), ('AK', False), ('IB', False),
-                ('IS', False), ('IL', False), ('IM', False), ('IR', False), ('IA', False), ('PN', False), ('II', False),
-                ('VF', False), ('TU', False), ('TK', False), ('TV', False), ('S1', False), ('S2', False), ('SE', False),
-                ('SN', False), ('PU', False), ('PJ', False), ('PG', False), ('P1', False), ('P2', False), ('FA', False),
-                ('HF', False), ('HL', False), ('HA', False), ('FC', False), ('FF', False), ('ED', False), ('SC', False),
-                ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('PR', False), ('DW', False), ('LN', False),
-                ('SM', False), ('SD', False), ('SO', False), ('BU', False), ('IO', False), ('CL', False), ('G1', False),
-                ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False), ('GE', False), ('CO', False),
-                ('AB', False), ('CA', False), ('MA', False), ('NL', False), ('8F', False), ('ND', False), ('EL', False),
-                ('SX', False),
+                ('ID', False), ('CT', False), ('MT', False), ('BN', False), ('LC', False), ('OC', False), ('AK', False),
+                ('IB', False), ('IS', False), ('IL', False), ('IM', False), ('IR', False), ('IA', False), ('PN', False),
+                ('II', False), ('VF', False), ('TU', False), ('TK', False), ('TV', False), ('S1', False), ('S2', False),
+                ('SE', False), ('SN', False), ('PU', False), ('PJ', False), ('PG', False), ('P1', False), ('P2', False),
+                ('FA', False), ('HF', False), ('HL', False), ('HA', False), ('FC', False), ('FF', False), ('ED', False),
+                ('SC', False), ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('PR', False), ('DW', False),
+                ('LN', False), ('SM', False), ('SD', False), ('SO', False), ('BU', False), ('IO', False), ('CL', False),
+                ('G1', False), ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False), ('GE', False),
+                ('CO', False), ('AB', False), ('CA', False), ('MA', False), ('NL', False), ('8F', False), ('ND', False),
+                ('EL', False), ('SX', False),
             ])
         elif profile == 'N':
             self.headings['ID'] = 'Title ID'
+            self.headings['TV'] = 'Publication title'
+            self.headings['MT'] = 'Carrier type'
             self.values = OrderedDict([
-                ('ID', True), ('OC', True), ('LC', True), ('BN', True), ('IS', True), ('IL', True), ('TV', True),
-                ('S1', True), ('S2', True), ('MT', True), ('G1', True), ('G2', True), ('PP', True), ('PC', True),
-                ('CG', True), ('CY', True), ('P1', True), ('P2', True), ('FA', True), ('ED', True), ('FC', True),
-                ('HF', True), ('HL', True), ('HA', True), ('BU', True), ('IO', True), ('CL', True), ('NL', True),
+                ('ID', True), ('OC', True), ('LC', True), ('BN', True), ('IS', True), ('TV', True), ('S1', True),
+                ('S2', True), ('MT', True), ('G1', True), ('G2', True), ('PP', True), ('PC', True), ('CG', True),
+                ('CY', True), ('P1', True), ('P2', True), ('FA', True), ('ED', True), ('FC', True), ('HF', True),
+                ('HL', True), ('HA', True), ('BU', True), ('IO', True), ('CL', True), ('NL', True),
                 # END OF FIELDS USED BY THIS PROFILE
-                ('RT', False), ('CT', False), ('ES', False), ('AK', False), ('IB', False), ('IM', False), ('IR', False),
-                ('IA', False), ('PN', False), ('AA', False), ('AD', False), ('AT', False), ('AR', False), ('II', False),
-                ('VF', False), ('AN', False), ('TT', False), ('TU', False), ('TK', False), ('SE', False), ('SN', False),
-                ('PB', False), ('PD', False), ('PU', False), ('PJ', False), ('PG', False), ('FF', False), ('DS', False),
-                ('SC', False), ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('PR', False), ('DW', False),
-                ('LN', False), ('SM', False), ('SD', False), ('SO', False), ('SU', False), ('CC', False), ('CF', False),
-                ('GE', False), ('LA', False), ('CO', False), ('AB', False), ('NN', False), ('CA', False), ('MA', False),
-                ('PV', False), ('RF', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
+                ('RT', False), ('CT', False), ('ES', False), ('AK', False), ('IB', False), ('IL', False), ('IM', False),
+                ('IR', False), ('IA', False), ('PN', False), ('AA', False), ('AD', False), ('AT', False), ('AR', False),
+                ('II', False), ('VF', False), ('AN', False), ('TT', False), ('TU', False), ('TK', False), ('SE', False),
+                ('SN', False), ('PB', False), ('PD', False), ('PU', False), ('PJ', False), ('PG', False), ('FF', False),
+                ('DS', False), ('SC', False), ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('PR', False),
+                ('DW', False), ('LN', False), ('SM', False), ('SD', False), ('SO', False), ('SU', False), ('CC', False),
+                ('CF', False), ('GE', False), ('LA', False), ('CO', False), ('AB', False), ('NN', False), ('CA', False),
+                ('MA', False), ('PV', False), ('RF', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
             ])
         elif profile == 'R':
             self.values = OrderedDict([
@@ -533,6 +535,7 @@ class Converter(object):
             # PC    # Publication country
             # LA    # Languages
             # FC    # Current publication frequency
+            # MF    # Musical form
 
             for field in record.get_fields('008'):
 
@@ -578,6 +581,12 @@ class Converter(object):
                 try: language = languages.get(re.sub(r'[^a-z]', '', field.data[35:38]), '')
                 except: pass
                 else: output.values['LA'].add(language)
+
+                if any (s in output.values['CT'] for s in ['c', 'd', 'j']):
+                    try: form = musical_forms.get(re.sub(r'[^a-z]', '', field.data[18:20]), '')
+                    except: pass
+                    else: output.values['MF'].add(form)
+
 
             # 010
             # LC    # LC number
