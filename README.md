@@ -81,6 +81,6 @@ This utility transforms a file of MARC records to Researcher Format.
 
 ### Notes
  
-The file specified in REQUEST_PATH must be an Outlook message submitted via the online form http://www.mappamorris.co.uk/researcherFormat/RFdatasetrequest.php and saved in the format 'Outlook Messafe Format - Unicode (*.msg)'
+The file specified in REQUEST_PATH must be an Outlook message submitted via the online form http://www.mappamorris.co.uk/researcherFormat/RFdatasetrequest.php and saved in the format 'Outlook Message Format - Unicode (*.msg)'
 
 MARC input files must have .lex file extensions.
