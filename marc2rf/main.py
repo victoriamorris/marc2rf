@@ -287,7 +287,7 @@ class Converter(object):
         self.marc_path = marc_path
         self.request_path = request_path
         self.output_folder = output_folder
-        self.options = re.sub(r'[^a-z]','',options)
+        self.options = re.sub(r'[^a-z]', '', options)
         self.debug = debug
         self.header = '========================================\n' \
                       'researcherFormat\n' \
@@ -379,31 +379,33 @@ class Converter(object):
                     readme.write(', {}'.format(self.output_fields.headings[v]))
             readme.write(', Other names, {}'.format(', '.join(self.output_fields.headings[v] for v in self.output_fields.values
                                                               if self.output_fields.values[v] and v not in ['AA', 'AD', 'AT', 'AR', 'II', 'VF', 'AN'])))
-            readme.write('.\nNote: when a resource is associated with multiple names, each name appears as a separate'
-                         ' entry within this file.\n\n')
+            readme.write('.\nNote: when a resource is associated with multiple names, each name appears as a separate '
+                         'entry within this file.\n\n')
         if self.file_titles:
-            readme.write('titles.csv.\nA list of all titles (such as main titles, standardised titles, and variant'
-                         ' titles) associated with the resources. Includes: Title, Other titles')
-            readme.write(', '.join(self.output_fields.headings[v] for v in self.output_fields.values if self.output_fields.values[v]
+            readme.write('titles.csv.\nA list of all titles (such as main titles, standardised titles, and variant '
+                         'titles) associated with the resources. Includes: Title, Other titles, ')
+            readme.write(', '.join(self.output_fields.headings[v]
+                                   for v in self.output_fields.values if self.output_fields.values[v]
                                    and v not in ['TT', 'TV', 'TU', 'TK']))
             readme.write('.\nNote: when a resource has multiple titles, each title appears as a separate entry within'
                          ' this file.\n\n')
         if self.file_topics:
-            readme.write('topics.csv.\nA list of all topical/subject terms (including general terms, geographical'
-                         ' terms, personal names, meetings/conferences and organisations) associated with the resources.'
-                         ' Includes: Topic, Type of topic')
-            readme.write(', '.join(
-                self.output_fields.headings[v] for v in self.output_fields.values if self.output_fields.values[v]
-                and v != 'SU'))
-            readme.write('.\nNote: when a resource has multiple topical terms, each term appears as a separate entry'
-                         ' within this file.\n\n')
+            readme.write('topics.csv.\nA list of all topical/subject terms (including general terms, geographical '
+                         'terms, personal names, meetings/conferences and organisations) associated with the '
+                         'resources. Includes: Topic, Type of topic, ')
+            readme.write(', '.join(self.output_fields.headings[v]
+                                   for v in self.output_fields.values if self.output_fields.values[v]
+                                   and v != 'SU'))
+            readme.write('.\nNote: when a resource has multiple topical terms, each term appears as a separate entry '
+                         'within this file.\n\n')
         if self.file_classification:
-            readme.write('classification.csv.\nA list of all Dewey classification numbers associated with the resources. Includes: Dewey classification')
+            readme.write('classification.csv.\nA list of all Dewey classification numbers associated with the '
+                         'resources. Includes: Dewey classification, ')
             readme.write(', '.join(
                 self.output_fields.headings[v] for v in self.output_fields.values if self.output_fields.values[v]
                 and v != 'DW'))
-            readme.write('.\nNote: when a resource has multiple Dewey classification numbers, each classification'
-                         ' appears as a separate entry within this file.\n\n')
+            readme.write('.\nNote: when a resource has multiple Dewey classification numbers, each classification '
+                         'appears as a separate entry within this file.\n\n')
         readme.write('===================================================================================================='
                      '\n\nFORMAT OF THE DATA\n\n'
                      'Header row: The first row is a header row containing the name of the value e.g. \'Place of publication\'.'
@@ -424,10 +426,10 @@ class Converter(object):
                      'MARC8. We have exported the csv files as UTF-8 but, depending on which utility you use to import '
                      'or analyse the data, there may be some instances where there are character set problems. These '
                      'may be circumvented if Unicode UTF-8 is an import option for the data format. For instance, if '
-                     'you wish to open the files in Excel, you will need to import the files as \'data from text\', and '
-                     'specify the character encoding as UTF-8; if you open the files in Excel without following this '
-                     'import procedure, it is likely that letters with diacritics and other special characters will not '
-                     'display properly.'
+                     'you wish to open the files in Excel, you will need to import the files as \'data from text\', '
+                     'and specify the character encoding as UTF-8; if you open the files in Excel without following '
+                     'this import procedure, it is likely that letters with diacritics and other special characters '
+                     'will not display properly.'
                      '\n\n'
                      'Data cleaning: Cataloguing rules and procedures have changed over time so there may be some '
                      'variations in the detail of each entry. Some cleaning of the data has been carried out to remove '
@@ -436,9 +438,9 @@ class Converter(object):
                      'these examples will be obvious because they will occur at the beginning of the table, prior to '
                      'the beginning of the alphabetical listing.\n\n')
         if self.estc or self.iams:
-            readme.write('Variations in data from different sources: The metadata in the tables has come from different '
-                         'sources. Some of the columns in the table will not be relevant to all data sources. For '
-                         'example, records from the {} not have BNB numbers, ISBNs, or Dewey '
+            readme.write('Variations in data from different sources: The metadata in the tables has come from '
+                         'different sources. Some of the columns in the table will not be relevant to all data '
+                         'sources. For example, records from the {} not have BNB numbers, ISBNs, or Dewey '
                          'classifications.\n\n'.format({(True, True): 'manuscript collections and ESTC may',
                                                         (True, False): 'ESTC may',
                                                         (False, True): 'manuscript collections will'}[(self.estc, self.iams)]))
@@ -1448,6 +1450,7 @@ class Converter(object):
             print('Output folder: {}'.format(self.output_folder))
         if self.debug:
             print('Debug mode')
+            print('options: {}'.format(str(self.options)))
 
         # If request message has been specified, use this to determine transformation parameters
         if self.request_path != '':
@@ -1489,7 +1492,9 @@ class Converter(object):
 
         else:
             self.sources.add('M')
-            if self.options in ['b', 'c' 'd', 'e' 'f', 'm', 'n']:
+            if self.debug:
+                print('Attempting to use options to determine profile: {}'.format(str(self.options)))
+            if str(self.options) in ['b', 'c', 'd', 'e', 'f', 'm', 'n']:
                 self.profile = self.options.upper()
             else:
                 # User selects columns to include
