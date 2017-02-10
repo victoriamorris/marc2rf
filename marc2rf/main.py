@@ -294,7 +294,6 @@ class Converter(object):
                       'MARC record conversion for Researcher Format\n' \
                       '========================================\n' \
                       'This program transforms a file of MARC records to Researcher Format\n'
-        self.sources = set()
         self.output_fields = Output(initiate=True)
         self.profile = None
         # Parameters for type of records to be included
@@ -1484,14 +1483,16 @@ class Converter(object):
                             self.file_classification = 'c' in vals
                         elif p == 's' and (re.sub(r'[^beimBEIM|]', '', vals) == vals):
                             vals = vals.upper()
-                            self.sources = set(re.sub(r'[^BEIM]', '', vals.upper()))
-                            if 'I' in self.sources:
+                            self.bnb = 'B' in vals
+                            self.estc = 'E' in vals
+                            self.iams = 'I' in vals
+                            self.main_cat = 'M' in vals
+                            if 'I' in vals:
                                 self.output_fields.headings['PD'] = 'Date of creation/publication'
                                 self.output_fields.headings['PU'] = 'Date of publication (not standardised)'
             msgfile.close()
 
         else:
-            self.sources.add('M')
             if self.debug:
                 print('Attempting to use options to determine profile: {}'.format(str(self.options)))
             if str(self.options) in ['b', 'c', 'd', 'e', 'f', 'm', 'n']:
@@ -1515,103 +1516,103 @@ class Converter(object):
                 while self.profile not in ['D', 'A', 'B', 'C', 'E', 'F', 'M', 'N', 'R', 'S']:
                     self.profile = input('Sorry, your choice was not recognised. Please enter D, A, B, C, E, F, M, N, R, or S:').upper()
 
-        if self.profile in ['D', 'A', 'B', 'C', 'E', 'F', 'N', 'R', 'S']:
-            self.output_fields = Output(profile=self.profile, initiate=True)
+            if self.profile in ['D', 'A', 'B', 'C', 'E', 'F', 'N', 'R', 'S']:
+                self.output_fields = Output(profile=self.profile, initiate=True)
 
-        # All columns and Default columns
-        if self.profile in ['D', 'A']:
-            self.bnb = get_boolean('Does the input data contain BNB records? (Y/N):')
-            self.iams = get_boolean('Is the output going to be combined with records from IAMS? (Y/N):')
-            self.estc = get_boolean('Does the input data contain ESTC records? (Y/N):')
+            # All columns and Default columns
+            if self.profile in ['D', 'A']:
+                self.bnb = get_boolean('Does the input data contain BNB records? (Y/N):')
+                self.iams = get_boolean('Is the output going to be combined with records from IAMS? (Y/N):')
+                self.estc = get_boolean('Does the input data contain ESTC records? (Y/N):')
 
-            # Remove IAMS-specific columns if no IAMS records are to be included
-            if self.iams:
-                for v in ['AK', 'PV', 'RF']:
-                    self.output_fields.values[v] = True
-                self.output_fields.headings['PD'] = 'Date of creation/publication'
-                self.output_fields.headings['PU'] = 'Date of creation/publication (not standardised)'
-            else:
-                self.output_fields.values['AK'] = False
-
-            # Remove BNB-specific columns
-            for v in ['II', 'VF']:
-                self.output_fields.values[v] = False
-
-            # Remove ESTC-specific columns if no ESTC records are present
-            if not self.estc:
-                self.output_fields.values['ES'] = False
-
-            # Remove other context-specific columns
-            for v in ['8F', 'BU', 'CG', 'CL', 'EL', 'FA', 'G1', 'G2', 'HA', 'HF', 'HL', 'IO', 'ND', 'NL',
-                      'P1', 'P2', 'PJ', 'SD', 'SO', 'SX']:
-                self.output_fields.values[v] = False
-
-        # Columns for ESTC records
-        elif self.profile == 'E':
-            self.estc, self.main_cat = True, False
-
-        # FRBRization
-        elif self.profile == 'F':
-            q880 = False
-
-        # Using MARC fields as column headers
-        elif self.profile == 'M':
-            q880 = False
-
-            # User chooses whether to include subfield codes
-            print('\n')
-            self.codes = get_boolean('Do you wish to retain subfield codes ($a, $b etc.)? (Y/N):')
-
-        # User selects columns to include
-        elif self.profile == 'S':
-            self.bnb = get_boolean('Does the input data contain BNB records? (Y/N):')
-            self.iams = get_boolean('Is the output going to be combined with records from IAMS? (Y/N):')
-            self.estc = get_boolean('Does the input data contain ESTC records? (Y/N):')
-            if self.iams:
-                self.output_fields.headings['PD'] = 'Date of creation/publication'
-                self.output_fields.headings['PU'] = 'Date of creation/publication (not standardised)'
-
-            print('\nChoose the optional columns: \n')
-
-            for v in self.output_fields.values:
-                opt_text = self.output_fields.headings[v]
-                # Skip some choices depending upon the values of parameters already set
-                if (self.iams and v in ['AK', 'PV']) or (self.bnb and v == 'BN') or (self.estc and v == 'ES'):
-                    self.output_fields.values[v] = True
-                elif v in ['_8F', 'NL', 'P1', 'P2', 'SD', 'SO', 'SX', 'II', 'VF'] or \
-                        (not self.output_fields.values['AA'] and v in ['AD', 'AT', 'AR', 'II', 'VF']) or \
-                        (not self.output_fields.values['SE'] and v == 'SN') or \
-                        (not self.output_fields.values['PD'] and v == 'PU'):
-                    self.output_fields.values[v] = False
+                # Remove IAMS-specific columns if no IAMS records are to be included
+                if self.iams:
+                    for v in ['AK', 'PV', 'RF']:
+                        self.output_fields.values[v] = True
+                    self.output_fields.headings['PD'] = 'Date of creation/publication'
+                    self.output_fields.headings['PU'] = 'Date of creation/publication (not standardised)'
                 else:
-                    # Add additional explanatory text to column heading when presenting user with choices
-                    if v == 'AA':
-                        opt_text += ' (of first author)'
-                    elif v in ['FA', 'FC', 'FF', 'HA', 'HF', 'HL', 'IL', 'IS', 'PG', 'TK']:
-                        opt_text += ' (relevant to serials only)'
-                    elif v in ['BU', 'CG', 'CL', 'IO', 'ND']:
-                        opt_text += ' (relevant to newspapers only)'
-                    elif v in ['IM', 'MF', 'MG', 'MA']:
-                        opt_text += ' (relevant to music only)'
-                    elif v in ['SC', 'JK', 'CD', 'CA']:
-                        opt_text += ' (relevant to cartographic materials only)'
-                    self.output_fields.values[v] = get_boolean('Include {0}? (Y/N):'.format(opt_text))
+                    self.output_fields.values['AK'] = False
 
-        if self.profile not in ['F', 'M'] and self.output_fields.values['PD'] and self.output_fields.values['PU']:
-            self.output_fields.headings['PD'] += ' (standardised)'
+                # Remove BNB-specific columns
+                for v in ['II', 'VF']:
+                    self.output_fields.values[v] = False
 
-        if self.profile in ['B', 'F', 'M', 'N', 'R']:
-            self.file_records = True
-        elif self.profile == 'C':
-            self.file_records, self.file_titles, self.file_names = True, True, True
-        else:
-            print('\n----------------------------------------')
-            print('Select output files to include:\n')
-            self.file_records = get_boolean('Include the Records file? (Y/N):')
-            self.file_titles = get_boolean('Include the Titles file? (Y/N):')
-            self.file_names = get_boolean('Include the Names file? (Y/N):')
-            self.file_topics = get_boolean('Include the Topics file? (Y/N):')
-            self.file_classification = get_boolean('Include the Classification file? (Y/N):')
+                # Remove ESTC-specific columns if no ESTC records are present
+                if not self.estc:
+                    self.output_fields.values['ES'] = False
+
+                # Remove other context-specific columns
+                for v in ['8F', 'BU', 'CG', 'CL', 'EL', 'FA', 'G1', 'G2', 'HA', 'HF', 'HL', 'IO', 'ND', 'NL',
+                          'P1', 'P2', 'PJ', 'SD', 'SO', 'SX']:
+                    self.output_fields.values[v] = False
+
+            # Columns for ESTC records
+            elif self.profile == 'E':
+                self.estc, self.main_cat = True, False
+
+            # FRBRization
+            elif self.profile == 'F':
+                q880 = False
+
+            # Using MARC fields as column headers
+            elif self.profile == 'M':
+                q880 = False
+
+                # User chooses whether to include subfield codes
+                print('\n')
+                self.codes = get_boolean('Do you wish to retain subfield codes ($a, $b etc.)? (Y/N):')
+
+            # User selects columns to include
+            elif self.profile == 'S':
+                self.bnb = get_boolean('Does the input data contain BNB records? (Y/N):')
+                self.iams = get_boolean('Is the output going to be combined with records from IAMS? (Y/N):')
+                self.estc = get_boolean('Does the input data contain ESTC records? (Y/N):')
+                if self.iams:
+                    self.output_fields.headings['PD'] = 'Date of creation/publication'
+                    self.output_fields.headings['PU'] = 'Date of creation/publication (not standardised)'
+
+                print('\nChoose the optional columns: \n')
+
+                for v in self.output_fields.values:
+                    opt_text = self.output_fields.headings[v]
+                    # Skip some choices depending upon the values of parameters already set
+                    if (self.iams and v in ['AK', 'PV']) or (self.bnb and v == 'BN') or (self.estc and v == 'ES'):
+                        self.output_fields.values[v] = True
+                    elif v in ['_8F', 'NL', 'P1', 'P2', 'SD', 'SO', 'SX', 'II', 'VF'] or \
+                            (not self.output_fields.values['AA'] and v in ['AD', 'AT', 'AR', 'II', 'VF']) or \
+                            (not self.output_fields.values['SE'] and v == 'SN') or \
+                            (not self.output_fields.values['PD'] and v == 'PU'):
+                        self.output_fields.values[v] = False
+                    else:
+                        # Add additional explanatory text to column heading when presenting user with choices
+                        if v == 'AA':
+                            opt_text += ' (of first author)'
+                        elif v in ['FA', 'FC', 'FF', 'HA', 'HF', 'HL', 'IL', 'IS', 'PG', 'TK']:
+                            opt_text += ' (relevant to serials only)'
+                        elif v in ['BU', 'CG', 'CL', 'IO', 'ND']:
+                            opt_text += ' (relevant to newspapers only)'
+                        elif v in ['IM', 'MF', 'MG', 'MA']:
+                            opt_text += ' (relevant to music only)'
+                        elif v in ['SC', 'JK', 'CD', 'CA']:
+                            opt_text += ' (relevant to cartographic materials only)'
+                        self.output_fields.values[v] = get_boolean('Include {0}? (Y/N):'.format(opt_text))
+
+            if self.profile not in ['F', 'M'] and self.output_fields.values['PD'] and self.output_fields.values['PU']:
+                self.output_fields.headings['PD'] += ' (standardised)'
+
+            if self.profile in ['B', 'F', 'M', 'N', 'R']:
+                self.file_records = True
+            elif self.profile == 'C':
+                self.file_records, self.file_titles, self.file_names = True, True, True
+            else:
+                print('\n----------------------------------------')
+                print('Select output files to include:\n')
+                self.file_records = get_boolean('Include the Records file? (Y/N):')
+                self.file_titles = get_boolean('Include the Titles file? (Y/N):')
+                self.file_names = get_boolean('Include the Names file? (Y/N):')
+                self.file_topics = get_boolean('Include the Topics file? (Y/N):')
+                self.file_classification = get_boolean('Include the Classification file? (Y/N):')
 
         self.write_readme()
 
