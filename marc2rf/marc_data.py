@@ -62,7 +62,6 @@ class BaseAddressError(Exception):
 class MARCReader(object):
 
     def __init__(self, marc_target):
-        # print(str(marc_target))
         super(MARCReader, self).__init__()
         if hasattr(marc_target, 'read') and callable(marc_target.read):
             self.file_handle = marc_target
