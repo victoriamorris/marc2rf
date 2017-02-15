@@ -112,6 +112,7 @@ class Abbreviations(MultiRegex):
         r'(?P<corrected>^corr(ected)?\.*$)',
         r'(?P<cover>^couv(erture)?\.*$)',
         r'(?P<deel>^de*l\.*$)',     # Dutch
+        r'(?P<Department>^dept\.*$)',
         r'(?P<diagrams>^diagra?m?s*\.*$)',
         r'(?P<dopolnennoe>^dop(ol)?(nennoe)?\.*$)',  # Russian
         r'(?P<DVDs>^dvd-?(rom)?s\.*$)',

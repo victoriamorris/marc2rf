@@ -760,9 +760,9 @@ def get_topic_parts(field):
             if field.tag == '600' and code == 'a':
                 content = re.sub(r'([\s.\-][A-Z])([,\s]|$)', r'\1.\2', content)
             term = add_string(content, term, '--')
-        elif code == ['c', 'd', 'e', 'n', 'q']:
+        elif code in ['c', 'd', 'e', 'n', 'q']:
             content = content.replace('B.C', 'B.C.').replace('A.D', 'A.D.').replace('..', '.')
-            term = add_string(content, term, ', ' if code == 'd' else ' ')
+            term = add_string(content, term, ', ' if code in ['c', 'd', 'n'] else ' ')
 
     term = repair_accents_in_place_names(term)
     term = re.sub(r'[$][a-z\s]', '--', term).replace('----', '--')
@@ -912,7 +912,7 @@ def clean_250(string):
 def clean_26X(string):
     if string == '': return ''
     # Remove rubbish values
-    if 'not identified' in string.lower(): return ''
+    if any(s in string.lower() for s in ['not identified', 'not indentified']): return ''
     string = quick_clean(string)
     if string.lower() in 'b.i. b. i. bi b i b.m. b. m. bm b m s.n. s. n. sn s n s.l. s. l. sl s l s.i. si s i nv n.v. n. v. n v np n.p. n. p. n p anno domini imprinted in the year': return ''
     # Remove brackets
@@ -1313,7 +1313,7 @@ def clean_publisher_names(string):
     string = quick_clean(string)
     string = re.sub(r'\b([A-Z]) \[([a-z]+)\][.,\s]+', r'\1\2 ', string)
     string = re.sub(r'[\s\-.,]*[:;\[\]\\/(){}<>|]+[\s\-.,]*', ';', string)
-    string = re.sub(r'[\s\-.,]*((\b[1-2][0-9]{3}\b|\.\.\.+|(&|\bet|\band|\bund)\s*c(o(mp(an)?y)?|(omp)?ie|orp)\b\.*|&c(ie)?\b\.*|\be[.\s]*t[.\s]*c\b[.\s]*|\bi[.\s]*e\b[.\s]*|\bl[.\s]*t[.\s]*d([.\s]*a)?\b[.\s]*|\bb[.\s]*[im]\b[.\s]*|\bn[.\s]*[pv]\b[.\s]*|\bs[.\s]*[inl]\b[.\s]*|\bp[.\s]*[ltv][.\s]*[cty]\b[.\s]*|\b(et\s*al|sic|viz)\b[.\s]*|(&|\bet|\band|\bund)\s*(bro(ther)?|son|the)s*\b[.\s]*|\b(also|distribution\s*(services*)?|exclusively|excudebant|incorporat(ing|ed)|issued|likewise|limited|lithographically|originally|serviced)\s*((by|for|in|into|par|pour|with)\b)?\s*(the\b)?|\bnot\s*avail(able)?\b|(\ban*)?\s*\b(book|division|imprint|part|publication)\s*(from|of)\b|(\bfor\s*)?\bsubscribers*\s*only\b|\btrading\s*as\b|(\bfor)?\s*(\bthe)?\s*\bprivate\s*(circulation|press)\b\s*(of\b)?|,([\s\-.,]*\b(an|and|at|by|chez|et|for|in|par|pour|the|typ|und|under|with)\b)+|\b(by|in|on|with)\s*(associatio?n|assignment|assistance|arrangement|authority|behalf|collaboration|conjunction|co-*operation|permission)\s*((from|of|with)\b)?\s*(the\b)?\s*((trustee|executor|guardian|proprietor)s*)?\s*(of\b)?\s*(the\b)?|(\b(for|from|of|with))?\s*(the)?\s*\b((trustee|executor|guardian|proprietor)s*)\b\s*(of\b)?\s*(the\b)?(late\b)?|\b((exclusive|joint|private)ly\s*)?((co|re)[\-\s]*)?((distribut|issu|print|produc|pub(lish|\.)?)ed\s*(&|\bet|\band|\bund)?\s*)+((exclusive|joint|private)ly\s*)?\s*((at\s*the\s*office\s*of|by|for|par|pour|with)\b)?\s*(the\b)?\s*(assistance\b)?\s*(of\b)?\s*(the\b)?|(\b(&|all|and|by|catholic|every|following|others?|principal|the|rest)[\s\-.,]*)*\b(administrator|author|distribute*or|.dit(eu|o)r|heir|perfumer|printer|proprietor|publisher|(book|law|music)[\s\-.,]*seller|stationer|successor)\'*s*(\s*(friend|syndicate)s?)?\b([\s\-.,]*(&|and|britain|city|country|county|great|in|kingdom|of|the|scotland|town|york)\b)*|\b(under|with)\s*the\s*((assistance|auspices?|co-*operation|direction|permission|sponsorship)\s*(&|\bet|\band|\bund)?\s*)+\s*(of\b)?\s*(the\b)?|((&|\bet|\band|\bund)\s*(are\s*to\s*be)|(&|\bet|\band|\bund)?\s*(are\s*to\s*be))\s*solde?\b|(&|\bet|\band|\bund)\s*subsidiar(y|ies)\b|\bar\s*ran\b|\bargraphwyd\s*(dros)?\b|\b(et\s*)?(a\s*lond.*?)?se\s*(trouve|vend)\b.*?(lond.*?)?che.*?propriet[aeious]*res?\b|\baux?\s*frais\s*(de\s*(l[eas]*\s*)?)?|\bimprim.e*.*?d.pens.*?ladite.*?academie\s*(par|pour)?\b|\bzu\s*finden\s*beym\b|\bdruck\s*der\b|\b(to|for)\s*((her|his|the\s*(king|queen)[.s\s]*most\s*excellent)\s*(majesty|royal\s*highness)([,\s]*pall-mall)?|the\s*society)([,\s]*(the\s*)?prince(\s*of\s*wales|sses))?\b|(&|\bet|\band|\bund)\s*(all|one|two|three|four|five|six|seven|eight|nine|ten|[0-9]+)?\s*others?\b|\ba favourite song in the enchanter\b|\ba scrapbook of pieces from m[.\s]*d\b[.\s]*|\bas\s*the\s*act\s*directs\b|\b(where|by\s*whom)\s*advertisements\s*are\s*taken\s*in\b|\bby\s*the\s*author.?s\s*appointment\b|\bmass\s*market\s*paperback\b|\bentered\s*at\s*stationer.?s hall\b|\b(also)?\s*(in|at)\s*(h(er|is)\s*majesty.?s|the|the\s*(king|queen)\'*s)\s*theatre\s*(in\b)?\s*(the\b)?\s*(hay-*market)?|\bin\s*(the)?\s*(u[.\s]*s[.\s]*a\b[.\s]*|north\s*(&|and)\s*south\s*america|united\s*states(\s*of\s*america)?|western\s*hemisphere)|\bat\s*(his|the)\s*(library|shop|(wholesale)?\s*warehouses?),?(\s*on\s*the\s*esplanade)?)[\s\-.,]*)+', ';', string, flags=re.IGNORECASE)
+    string = re.sub(r'[\s\-.,]*((\b[1-2][0-9]{3}\b|\.\.\.+|(&|\bet|\band|\bund)\s*c(o(mp(an)?y)?|(omp)?ie|orp)\b\.*|&c(ie)?\b\.*|\be[.\s]*t[.\s]*c\b[.\s]*|\bi[.\s]*e\b[.\s]*|\bl[.\s]*t[.\s]*d([.\s]*a)?\b[.\s]*|\bb[.\s]*[im]\b[.\s]*|\bn[.\s]*[pv]\b[.\s]*|\bs[.\s]*[inl]\b[.\s]*|\bp[.\s]*[ltv][.\s]*[cty]\b[.\s]*|\b(et\s*al|sic|viz)\b[.\s]*|(&|\bet|\band|\bund)\s*(bro(ther)?|son|the)s*\b[.\s]*|\b(also|distribution\s*(services*)?|exclusively|excudebant|incorporat(ing|ed)|issued|likewise|limited|lithographically|originally|serviced)\s*((by|for|in|into|par|pour|with)\b)?\s*(the\b)?|\bnot\s*avail(able)?\b|(\ban*)?\s*\b(book|division|imprint|part|publication)\s*(from|of)\b|(\bfor\s*)?\bsubscribers*\s*only\b|\btrading\s*as\b|(\bfor)?\s*(\bthe)?\s*\bprivate\s*(circulation|press)\b\s*(of\b)?|,([\s\-.,]*\b(an|and|at|by|chez|et|for|in|par|pour|the|typ|und|under|with)\b)+|\b(by|in|on|with)\s*(associatio?n|assignment|assistance|arrangement|authority|behalf|collaboration|conjunction|co-*operation|permission)\s*((from|of|with)\b)?\s*(the\b)?\s*((trustee|executor|guardian|proprietor)s*)?\s*(of\b)?\s*(the\b)?|(\b(for|from|of|with))?\s*(the)?\s*\b((trustee|executor|guardian|proprietor)s*)\b\s*(of\b)?\s*(the\b)?(late\b)?|\b((exclusive|joint|private)ly\s*)?((co|re)[\-\s]*)?((distribut|issu|print|produc|pub(lish|\.)?)ed\s*((&|\bet|\band|\bund)\b)?\s*)+((exclusive|joint|private)ly\s*)?\s*((at\s*the\s*office\s*of|by|for|par|pour|with)\b)?\s*(the\b)?\s*(assistance\b)?\s*(of\b)?\s*(the\b)?|(\b(&|all|and|by|catholic|every|following|others?|principal|the|rest)[\s\-.,]*)*\b(administrator|author|distribute*or|.dit(eu|o)r|heir|perfumer|printer|proprietor|publisher|(book|law|music)[\s\-.,]*seller|stationer|successor)\'*s*(\s*(friend|syndicate)s?)?\b([\s\-.,]*(&|and|britain|city|country|county|great|in|kingdom|of|the|scotland|town|york)\b)*|\b(under|with)\s*the\s*((assistance|auspices?|co-*operation|direction|permission|sponsorship)\s*((&|\bet|\band|\bund)\b)?\s*)+\s*(of\b)?\s*(the\b)?|((&|\bet|\band|\bund)\s*(are\s*to\s*be)|((&|\bet|\band|\bund)\b)?\s*(are\s*to\s*be))\s*solde?\b|(&|\bet|\band|\bund)\s*subsidiar(y|ies)\b|\bar\s*ran\b|\bargraphwyd\s*(dros)?\b|\b(et\s*)?(a\s*lond.*?)?se\s*(trouve|vend)\b.*?(lond.*?)?che.*?propriet[aeious]*res?\b|\baux?\s*frais\s*(de\s*(l[eas]*\s*)?)?|\bimprim.e*.*?d.pens.*?ladite.*?academie\s*(par|pour)?\b|\bzu\s*finden\s*beym\b|\bdruck\s*der\b|\b(to|for)\s*((her|his|the\s*(king|queen)[.s\s]*most\s*excellent)\s*(majesty|royal\s*highness)([,\s]*pall-mall)?|the\s*society)([,\s]*(the\s*)?prince(\s*of\s*wales|sses))?\b|(&|\bet|\band|\bund)\s*(all|one|two|three|four|five|six|seven|eight|nine|ten|[0-9]+)?\s*others?\b|\ba favourite song in the enchanter\b|\ba scrapbook of pieces from m[.\s]*d\b[.\s]*|\bas\s*the\s*act\s*directs\b|\b(where|by\s*whom)\s*advertisements\s*are\s*taken\s*in\b|\bby\s*the\s*author.?s\s*appointment\b|\bmass\s*market\s*paperback\b|\bentered\s*at\s*stationer.?s hall\b|\b(also)?\s*(in|at)\s*(h(er|is)\s*majesty.?s|the|the\s*(king|queen)\'*s)\s*theatre\s*(in\b)?\s*(the\b)?\s*(hay-*market)?|\bin\s*(the)?\s*(u[.\s]*s[.\s]*a\b[.\s]*|north\s*(&|and)\s*south\s*america|united\s*states(\s*of\s*america)?|western\s*hemisphere)|\bat\s*(his|the)\s*(library|shop|(wholesale)?\s*warehouses?),?(\s*on\s*the\s*esplanade)?)[\s\-.,]*)+', ';', string, flags=re.IGNORECASE)
     string = re.sub(r'[\s\-.,]*\b(committee|office)s*\s*of\b[\s\-.,]*\'', ';\'', string, flags=re.IGNORECASE)
     string = re.sub(r'\'[\s\-.,]*\b(publi(cation|shing))s*[\s\-.,]*', '\';', string, flags=re.IGNORECASE)
     # Words to split after
@@ -1336,7 +1336,7 @@ def clean_publisher_names(string):
 
                 if ' ' in substring:
                     first = quick_clean(substring.split(None, 1)[0], hyphens=False)
-                    while ' ' in substring and (first.lower() in words_to_trim or is_lower_case_letter(first)):
+                    while ' ' in substring and ( (first.lower() in words_to_trim and first != 'UK') or is_lower_case_letter(first)):
                         substring = quick_clean(substring.split(None, 1)[1], hyphens=False)
                         if ' ' not in substring: break
                         first = quick_clean(substring.split(None, 1)[0], hyphens=False)
@@ -1358,7 +1358,7 @@ def clean_publisher_names(string):
                 substring = quick_clean(substring, hyphens=False).strip('?')
 
                 if substring.lower() in words_to_trim or len(substring) <= 3 \
-                        or substring in ['book', 'group', 'publications', 'publishing'] \
+                        or substring.lower() in ['book', 'group', 'publication', 'publications', 'publishing', 'publishing'] \
                         or re.sub(r'[0-9\-.,]', '', substring) == '':
                     substring = ''
 

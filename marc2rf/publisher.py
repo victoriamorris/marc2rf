@@ -341,6 +341,8 @@ class Publishers(PublisherMultiRegex):
         r'(?P<Delalain>^delalain.*)',
         r'(?P<Dell>^dell\s*pub.*)',
         r'(?P<Dent>^dent\s*(child).*)',
+        r'(?P<DepartmentUUU0020forUUU0020ChildrenUUU002CUUU0020SchoolsUUU0020UUU0026UUU0020Families>^dep(artmen)?t.*?children.*?school.*?famil*ies.*)',
+        r'(?P<DepartmentUUU0020forUUU0020CultureUUU002CUUU0020MediaUUU0020UUU0026UUU0020Sport>^dep(artmen)?t.*?culture.*?media.*?sport.*)',
         r'(?P<DerbyshireUUU0020Times>^derbyshire times.*)',
         r'(?P<DerryUUU0020Journal>^derry journal.*)',
         r'(?P<Deveron>^deveron\s*press.*)',
