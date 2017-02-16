@@ -2230,10 +2230,11 @@ class ConfigWriter(object):
                         temp = ''
                         subfields = search_string.split('$')
                         for j in range(len(subfields)):
-                            subfields[j] = escape_regex_chars(clean_search_string(subfields[j]))
-                            if len(subfields[j]) >= 2:
+                            s = str(escape_regex_chars(clean_search_string(subfields[j])))
+                            if len(s) >= 2:
                                 temp = add_string('(FIELD 100-499 SUBFIELD {} CONTAINS CASE_INSENSITIVE "{}")'.format(
-                                    subfields[j][0], clean_search_string(subfields[j][1:])), temp, ' AND ')
+                                    s[0], clean_search_string(s[1:])), temp, ' AND ',
+                                    allow_repeats=True)
                         output_string = add_string(temp, output_string, '\n OR ', brackets=True)
                         output_string = add_string(temp.replace('FIELD 100-499 SUBFIELD', 'FIELD 600-799 SUBFIELD'), output_string, '\n OR ', brackets=True)
                     else:
