@@ -307,9 +307,9 @@ def isbn_convert(isbn10):
 # Miscellaneous other useful functions
 
 
-def add_string(string, base, separator, brackets=False):
+def add_string(string, base, separator, brackets=False, allow_repeats=False):
     """Function to append a string to another string"""
-    if string != '' and string not in base:
+    if string != '' and (string not in base or allow_repeats):
         if base != '': base = base + separator
         if brackets: string = '( {} )'.format(string)
         base += string
