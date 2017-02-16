@@ -360,9 +360,9 @@ class Converter(object):
                          'This dataset is being made available to support the researcher\'s own project; it is not for '
                          're-supply to any third party for commercial purposes.\n\n'
                          'Please contact estc@bl.uk before sharing this dataset with other researchers.\n\n'
-                         'Please acknowledge the ESTC in any publications.\n\n'
-                         '====================================================================================================\n\n')
-        readme.write('CSV FILES\n\n')
+                         'Please acknowledge the ESTC in any publications.\n\n')
+        readme.write('===================================================================================================='
+                     '\n\nCSV FILES\n\n')
         if self.file_records:
             readme.write('records.csv.\nA list of all resources. Includes: ')
             readme.write(', '.join(self.output_fields.headings[v] for v in self.output_fields.values if self.output_fields.values[v]))
