@@ -2053,7 +2053,7 @@ class ConfigWriter(object):
                         for v in re.sub(r'[^\x00-\x7F]', '.', vals).split('|'):
                             self.parameters[p].add(v)
                     elif p in ['cp1', 'l1']:
-                        for v in re.sub(r'[^a-z|\s]', '', vals.lower()).split('|'):
+                        for v in re.sub(r'[^a-z.|\s]', '', vals.lower()).split('|'):
                             if 2 <= len(v) <= 3:
                                 self.parameters[p].add((v + ' ')[:3])
                     elif p == 'dw':
