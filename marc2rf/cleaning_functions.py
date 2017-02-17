@@ -1358,7 +1358,8 @@ def clean_publisher_names(string):
                 substring = quick_clean(substring, hyphens=False).strip('?')
 
                 if substring.lower() in words_to_trim or len(substring) <= 3 \
-                        or substring.lower() in ['book', 'group', 'publication', 'publications', 'publishing', 'publishing'] \
+                        or substring.lower() in ['book', 'children\'s', 'group', 'members', 'private',
+                                                 'publication', 'publications', 'publishing', 'publishing'] \
                         or re.sub(r'[0-9\-.,]', '', substring) == '':
                     substring = ''
 
