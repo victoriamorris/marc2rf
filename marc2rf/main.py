@@ -1046,11 +1046,14 @@ class Converter(object):
 
             # 505
             # CO    # Contents
+            # TV    # Variant titles
             for field in record.get_fields('505'):
                 contents = ''
                 for subfield in field.get_subfields('a', 'g', 'r', 't'):
                     contents = add_string(subfield, contents, ' ')
                 output.values['CO'].add(contents)
+                for subfield in field.get_subfields('t'):
+                    output.values['TV'].add(subfield)
 
             # 510
             # RF    # References
