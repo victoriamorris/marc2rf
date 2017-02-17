@@ -62,6 +62,7 @@ class BaseAddressError(Exception):
 class MARCReader(object):
 
     def __init__(self, marc_target):
+        # print(str(marc_target))
         super(MARCReader, self).__init__()
         if hasattr(marc_target, 'read') and callable(marc_target.read):
             self.file_handle = marc_target
@@ -125,7 +126,8 @@ class Record(object):
 
     def decode_marc(self, marc):
         # Extract record leader
-        self.leader = marc[0:LEADER_LEN].decode('ascii')
+        try: self.leader = marc[0:LEADER_LEN].decode('ascii')
+        except: print('Record has problem with and cannot be processed')
         if len(self.leader) != LEADER_LEN: raise LeaderError
 
         # Extract the byte offset where the record data starts
@@ -170,9 +172,11 @@ class Record(object):
 
                 for subfield in subs[1:]:
                     if len(subfield) == 0: continue
-                    code, data = subfield[0:1].decode('ascii'), subfield[1:].decode('utf-8', 'strict')
-                    subfields.append(code)
-                    subfields.append(data)
+                    try: code, data = subfield[0:1].decode('ascii'), subfield[1:].decode('utf-8', 'strict')
+                    except: print('Error in subfield code')
+                    else:
+                        subfields.append(code)
+                        subfields.append(data)
                 field = Field(
                     tag=entry_tag,
                     indicators=[first_indicator, second_indicator],
