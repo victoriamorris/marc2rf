@@ -90,10 +90,13 @@ def clean_msg(string):
     return string
 
 
-def clean_search_string(string):
+def clean_search_string(string, escape=True):
     """Function to clean a search string"""
     if string is None or not string or string == '': return ''
     string = string.strip('!"£%^&*()_-+={}[]::@~#<,>.?/|\`¬ ').strip("' ")
+    if escape:
+        string = escape_regex_chars(string)
+        string = re.sub(r'[^\x00-\x7F]', '.', string)
     return string
 
 

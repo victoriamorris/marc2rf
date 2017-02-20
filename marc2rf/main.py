@@ -2053,7 +2053,7 @@ class ConfigWriter(object):
                         try: print('Parameter: {}\nValues: {}\n'.format(p, vals))
                         except: pass
                     if p == 'txt':
-                        for v in re.sub(r'[^\x00-\x7F]', '.', vals).split('|'):
+                        for v in vals.split('|'):
                             self.parameters[p].add(v)
                     elif p in ['cp1', 'l1']:
                         for v in re.sub(r'[^a-z.|\s]', '', vals.lower()).split('|'):
@@ -2233,7 +2233,7 @@ class ConfigWriter(object):
                         temp = ''
                         subfields = search_string.split('$')
                         for j in range(len(subfields)):
-                            s = str(escape_regex_chars(clean_search_string(subfields[j])))
+                            s = clean_search_string(subfields[j], escape=False)
                             if len(s) >= 2:
                                 temp = add_string('(FIELD 100-499 SUBFIELD {} CONTAINS CASE_INSENSITIVE "{}")'.format(
                                     s[0], clean_search_string(s[1:])), temp, ' AND ',
@@ -2241,7 +2241,7 @@ class ConfigWriter(object):
                         output_string = add_string(temp, output_string, '\n OR ', brackets=True)
                         output_string = add_string(temp.replace('FIELD 100-499 SUBFIELD', 'FIELD 600-799 SUBFIELD'), output_string, '\n OR ', brackets=True)
                     else:
-                        search_string = escape_regex_chars(clean_search_string(search_string))
+                        search_string = clean_search_string(search_string)
                         output_string = add_string(
                             '(FIELD 100-499 SUBFIELD. CONTAINS CASE_INSENSITIVE "{}")'.format(search_string), output_string, '\n OR ')
                         output_string = add_string(
