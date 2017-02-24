@@ -96,7 +96,7 @@ def clean_search_string(string, escape=True):
     string = string.strip('!"£%^&*()_-+={}[]::@~#<,>.?/|\`¬ ').strip("' ")
     if escape:
         string = escape_regex_chars(string)
-        string = re.sub(r'[^\x00-\x7F]', '.', string)
+        string = re.sub(r'[^\x00-\x7F]', '.*', string)
     return string
 
 
