@@ -369,6 +369,7 @@ class Converter(object):
             if self.profile != 'C':
                 readme.write('.\nNote: we have used the column heading \'Name\' rather than \'Author\' to reflect the '
                              'fact that the names associated with a resource may be editors, artists, etc.\n\n')
+            readme.write('\n\n')
         if self.file_names:
             readme.write('names.csv.\nA list of all names (including authors and editors, personal names and '
                          'organisations) associated with the resources. Includes: Name, Dates associated with name, '
