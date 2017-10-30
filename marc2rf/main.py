@@ -1461,7 +1461,7 @@ class Converter(object):
             print('----------------------------------------')
             print(str(datetime.datetime.now()))
             self.output_fields = Output(initiate=True)
-            msgfile = open(os.path.join(request_folder, request_file + request_ext), mode='r', encoding='utf-8',
+            msgfile = open(os.path.join(request_folder, request_file + request_ext), mode='r', encoding='utf-16le',
                            errors='replace')
             for filelineno, line in enumerate(msgfile):
                 if 'Coded parameters for your transformation' in line: break
@@ -2040,7 +2040,7 @@ class ConfigWriter(object):
         print('----------------------------------------')
         print(str(datetime.datetime.now()))
 
-        msgfile = open(os.path.join(request_folder, request_file + request_ext), mode='r', encoding='utf-8',
+        msgfile = open(os.path.join(request_folder, request_file + request_ext), mode='r', encoding='utf-16le',
                        errors='replace')
         for filelineno, line in enumerate(msgfile):
             if 'Coded parameters for your transformation' in line: break
