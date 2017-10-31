@@ -1461,14 +1461,15 @@ class Converter(object):
             print('----------------------------------------')
             print(str(datetime.datetime.now()))
             self.output_fields = Output(initiate=True)
-            msgfile = open(os.path.join(request_folder, request_file + request_ext), mode='r', encoding='utf-16le',
+            msgfile = open(os.path.join(request_folder, request_file + request_ext), mode='r', encoding='utf-8',
                            errors='replace')
             for filelineno, line in enumerate(msgfile):
+                line = clean_msg(line)
                 if 'Coded parameters for your transformation' in line: break
             for filelineno, line in enumerate(msgfile):
+                line = clean_msg(line)
                 if 'End of coded parameters' in line: break
-                if '=' in line:
-                    line = clean_msg(line)
+                if '=' in line:                    
                     p, vals = line.split('=', 1)[0].strip(), re.sub(r'^ ', '', line.split('=', 1)[-1])
                     if p != '' and vals != '':
                         if self.debug:
@@ -2040,14 +2041,15 @@ class ConfigWriter(object):
         print('----------------------------------------')
         print(str(datetime.datetime.now()))
 
-        msgfile = open(os.path.join(request_folder, request_file + request_ext), mode='r', encoding='utf-16le',
+        msgfile = open(os.path.join(request_folder, request_file + request_ext), mode='r', encoding='utf-8',
                        errors='replace')
         for filelineno, line in enumerate(msgfile):
+            line = clean_msg(line)
             if 'Coded parameters for your transformation' in line: break
         for filelineno, line in enumerate(msgfile):
+            line = clean_msg(line)
             if 'End of coded parameters' in line: break
-            if '=' in line:
-                line = clean_msg(line)
+            if '=' in line:                
                 p, vals = line.split('=', 1)[0].strip(), re.sub(r'^ ', '', line.split('=', 1)[-1])
                 if p != '' and vals != '':
                     if self.debug:
