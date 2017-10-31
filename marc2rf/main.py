@@ -113,6 +113,8 @@ class Output:
                 'CF': 'Coverage: Region',
                 'CY': 'Coverage: City',
                 'GE': 'Genre',
+                'TA': 'Target audience',  # NEW
+                'LF': 'Literary form',  # NEW
                 'LA': 'Languages',
                 'CO': 'Contents',
                 'AB': 'Abstract',
@@ -169,8 +171,9 @@ class Output:
                 ('HF', False), ('HL', False), ('HA', False), ('FC', False), ('FF', False), ('ED', False), ('SC', False),
                 ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('LN', False), ('SM', False), ('SD', False),
                 ('SO', False), ('BU', False), ('IO', False), ('CL', False), ('G1', False), ('G2', False), ('CG', False),
-                ('CC', False), ('CF', False), ('CY', False), ('GE', False), ('AB', False), ('CA', False), ('MA', False),
-                ('PV', False), ('RF', False), ('NL', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
+                ('CC', False), ('CF', False), ('CY', False), ('GE', False), ('TA', False), ('LF', False), ('AB', False),
+                ('CA', False), ('MA', False), ('PV', False), ('RF', False), ('NL', False), ('8F', False), ('ND', False),
+                ('EL', False), ('SX', False),
             ])
         elif profile == 'C':
             self.headings['AA'] = 'Composer'
@@ -188,8 +191,9 @@ class Output:
                 ('P1', False), ('P2', False), ('FA', False), ('HF', False), ('HL', False), ('HA', False), ('FC', False),
                 ('FF', False), ('SC', False), ('JK', False), ('CD', False), ('PR', False), ('DW', False), ('LN', False),
                 ('SD', False), ('SO', False), ('BU', False), ('IO', False), ('CL', False), ('G1', False), ('G2', False),
-                ('CG', False), ('CC', False), ('CF', False), ('CY', False), ('GE', False), ('LA', False), ('AB', False),
-                ('CA', False), ('PV', False), ('NL', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
+                ('CG', False), ('CC', False), ('CF', False), ('CY', False), ('GE', False), ('TA', False), ('LF', False),
+                ('LA', False), ('AB', False), ('CA', False), ('PV', False), ('NL', False), ('8F', False), ('ND', False),
+                ('EL', False), ('SX', False),
             ])
         elif profile == 'E':
             self.values = OrderedDict([
@@ -205,8 +209,8 @@ class Output:
                 ('SC', False), ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('PR', False), ('DW', False),
                 ('LN', False), ('SM', False), ('SD', False), ('SO', False), ('BU', False), ('IO', False), ('CL', False),
                 ('G1', False), ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False), ('GE', False),
-                ('CO', False), ('AB', False), ('CA', False), ('MA', False), ('NL', False), ('8F', False), ('ND', False),
-                ('EL', False), ('SX', False),
+                ('TA', False), ('LF', False), ('CO', False), ('AB', False), ('CA', False), ('MA', False), ('NL', False),
+                ('8F', False), ('ND', False), ('EL', False), ('SX', False),
             ])
         elif profile == 'N':
             self.headings['ID'] = 'Title ID'
@@ -224,8 +228,9 @@ class Output:
                 ('SN', False), ('PB', False), ('PD', False), ('PU', False), ('PJ', False), ('PG', False), ('FF', False),
                 ('DS', False), ('SC', False), ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('PR', False),
                 ('DW', False), ('LN', False), ('SM', False), ('SD', False), ('SO', False), ('SU', False), ('CC', False),
-                ('CF', False), ('GE', False), ('LA', False), ('CO', False), ('AB', False), ('NN', False), ('CA', False),
-                ('MA', False), ('PV', False), ('RF', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
+                ('CF', False), ('GE', False), ('TA', False), ('LF', False), ('LA', False), ('CO', False), ('AB', False),
+                ('NN', False), ('CA', False), ('MA', False), ('PV', False), ('RF', False), ('8F', False), ('ND', False),
+                ('EL', False), ('SX', False),
             ])
         elif profile == 'R':
             self.values = OrderedDict([
@@ -240,9 +245,9 @@ class Output:
                 ('PG', False), ('P1', False), ('P2', False), ('FA', False), ('HF', False), ('HL', False), ('HA', False),
                 ('FC', False), ('FF', False), ('SC', False), ('JK', False), ('CD', False), ('MF', False), ('MG', False),
                 ('PR', False), ('LN', False), ('SM', False), ('BU', False), ('IO', False), ('CL', False), ('G1', False),
-                ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False), ('CO', False), ('AB', False),
-                ('CA', False), ('MA', False), ('PV', False), ('RF', False), ('NL', False), ('8F', False), ('ND', False),
-                ('EL', False), ('SX', False),
+                ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False), ('TA', False), ('LF', False),
+                ('CO', False), ('AB', False), ('CA', False), ('MA', False), ('PV', False), ('RF', False), ('NL', False),
+                ('8F', False), ('ND', False), ('EL', False), ('SX', False),
             ])
 
         else:
@@ -257,8 +262,9 @@ class Output:
                 ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('PR', False), ('DW', True),  ('LN', False),
                 ('SM', True),  ('SD', False), ('SO', False), ('BU', False), ('IO', False), ('CL', False), ('SU', True),
                 ('G1', False), ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False), ('GE', True),
-                ('LA', True),  ('CO', False), ('AB', False), ('NN', True),  ('CA', False), ('MA', False), ('PV', False),
-                ('RF', False), ('NL', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
+                ('TA', False), ('LF', False), ('LA', True),  ('CO', False), ('AB', False), ('NN', True),  ('CA', False),
+                ('MA', False), ('PV', False), ('RF', False), ('NL', False), ('8F', False), ('ND', False), ('EL', False),
+                ('SX', False),
             ])
         if initiate:
             # Do I want to exclude more fields here?
@@ -538,6 +544,8 @@ class Converter(object):
             # LA    # Languages
             # FC    # Current publication frequency
             # MF    # Musical form
+            # TA    # Target audience
+            # LF    # Literary form
 
             for field in record.get_fields('008'):
 
@@ -579,6 +587,16 @@ class Converter(object):
                     try: frequency = frequencies.get(re.sub(r'[^a-z]', '', field.data[18]), '')
                     except: pass
                     else: output.values['FC'].add(frequency)
+
+                # Target audience and literary form are restricted to monographs only
+                if 'Language material' in output.values['CT'] and 'Monograph' in output.values['RT']:
+                    try: audience = audiences.get(re.sub(r'[^a-z]', '', field.data[22]), '')
+                    except: pass
+                    else: output.values['TA'].add(audience)
+
+                    try: literary_form = literary_forms.get(re.sub(r'[^01a-z]', '', field.data[33]), '')
+                    except: pass
+                    else: output.values['LF'].add(literary_form)                
 
                 try: language = languages.get(re.sub(r'[^a-z]', '', field.data[35:38]), '')
                 except: pass
@@ -1469,7 +1487,7 @@ class Converter(object):
             for filelineno, line in enumerate(msgfile):
                 line = clean_msg(line)
                 if 'End of coded parameters' in line: break
-                if '=' in line:                    
+                if '=' in line:
                     p, vals = line.split('=', 1)[0].strip(), re.sub(r'^ ', '', line.split('=', 1)[-1])
                     if p != '' and vals != '':
                         if self.debug:
