@@ -603,6 +603,33 @@ encoding_levels = {
     'z': 'z - Not applicable',
 }
 
+# Lookup table for target audience from 008/22 codes
+audiences = {
+    'a': 'Preschool',
+    'b': 'Primary',
+    'c': 'Pre-adolescent',
+    'd': 'Adolescent',
+    'e': 'Adult',
+    'f': 'Specialized',
+    'g': 'General',
+    'j': 'Juvenile',
+}
+
+# Lookup table for literary form from 008/33 codes
+literary_forms = {
+    '0': 'Not fiction',
+    '1': 'Fiction',
+    'd': 'Dramas',
+    'e': 'Essays',
+    'f': 'Novels',
+    'h': 'Humor, satires, etc.',
+    'i': 'Letters',
+    'j': 'Short stories',
+    'm': 'Mixed forms,
+    'p': 'Poetry',
+    's': 'Speeches',
+}
+
 # Lookup table for MARC relator codes
 relators = {
     'abr': 'abridger',
