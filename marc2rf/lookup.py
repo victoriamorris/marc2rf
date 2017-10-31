@@ -625,7 +625,7 @@ literary_forms = {
     'h': 'Humor, satires, etc.',
     'i': 'Letters',
     'j': 'Short stories',
-    'm': 'Mixed forms,
+    'm': 'Mixed forms',
     'p': 'Poetry',
     's': 'Speeches',
 }
