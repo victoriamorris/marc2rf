@@ -997,6 +997,7 @@ def clean_300(field):
     description = description.replace('volume unpaged', 'volume (unpaged)')
     description = description.replace('wood engraved', 'wood engravings')
     description = re.sub(r'(?<![a-z])s sheet', 'single sheet', description)
+    description = re.sub(r' (illustrations|maps) \((colour|black and white)\)', r' \2 \1', description)
 
     if len(description) < 5: return ''
     description = quick_clean(description)
