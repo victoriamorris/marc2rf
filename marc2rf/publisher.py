@@ -47,7 +47,7 @@ class PublisherMultiRegex(object):
 class Publishers(PublisherMultiRegex):
     # Need to put \b before initials
     regexes = (
-        r'(?P<AUUU002EUUU0020&UUU0020CUUU002EUUU0020Black>^a\.? & c\.? \bblack.*)',
+        r'(?P<AUUU002EUUU0020UUU0026UUU0020CUUU002EUUU0020Black>^a\.? & c\.? \bblack.*)',
         r'(?P<AaronUUU0020Arrowsmith>^a(aron)?[.\s]*arrowsmith.*)',
         r'(?P<Abacus>^(wells\s*)?abacus\b.*)',
         r'(?P<AbacusUUU0020Communications>^abacus\s*communicat.*)',
