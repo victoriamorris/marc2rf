@@ -319,7 +319,7 @@ class Converter(object):
         sources = OrderedDict([
             ('bnb', [self.bnb, 'the British National Bibliography (BNB)', 'http://bnb.bl.uk (BNB)']),
             ('estc', [self.estc, 'the English Short Title Catalogue (ESTC)', 'http://estc.bl.uk (ESTC)']),
-            ('main_cat', [self.main_cat, 'our British Library print collections', 'http://explore.bl.uk (published items)']),
+            ('main_cat', [self.main_cat, 'our British Library collections', 'http://explore.bl.uk (published items)']),
             ('iams', [self.iams, 'our British Library manuscript collections', 'http://searcharchives.bl.uk (unpublished items)']),
         ])
 
@@ -338,7 +338,7 @@ class Converter(object):
             else:
                 readme.write(' and '.join((', '.join(sources[s][1] for s in sources if sources[s][0]).replace(
                     '{}, {}'.format(sources['main_cat'], sources['iams']),
-                    'our British Library print and manuscript collections')).rsplit(', ', 1)) + '.\n\n')
+                    'our British Library collections')).rsplit(', ', 1)) + '.\n\n')
         readme.write('There are {} files; each provides a different view of the data. '.format(
             str(sum([self.file_records, self.file_titles, self.file_names, self.file_topics, self.file_classification]))))
         readme.write('Each record in a .csv file contains the identifier ')
