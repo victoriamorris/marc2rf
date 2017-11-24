@@ -337,7 +337,7 @@ class Converter(object):
                 readme.write('our British Library collections.\n\n')
             else:
                 readme.write(' and '.join((', '.join(sources[s][1] for s in sources if sources[s][0]).replace(
-                    '{}, {}'.format(sources['main_cat'], sources['iams']),
+                    '{}, {}'.format(sources['main_cat'][1], sources['iams'][1]),
                     'our British Library collections')).rsplit(', ', 1)) + '.\n\n')
         readme.write('There are {} files; each provides a different view of the data. '.format(
             str(sum([self.file_records, self.file_titles, self.file_names, self.file_topics, self.file_classification]))))
