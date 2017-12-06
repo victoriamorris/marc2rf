@@ -735,9 +735,9 @@ class Converter(object):
             for field in record.get_fields('035'):
                 for subfield in field.get_subfields('a'):
                     if '(CU-RivES)' in subfield:
-                        output.values['ES'].add(subfield.replace('(CU-RivES)', ''))
+                        output.values['ES'].add(subfield.replace('(CU-RivES)', '').strip())
                     elif '(OCoLC)' in subfield:
-                        output.values['OC'].add(subfield.replace('(OCoLC)', ''))
+                        output.values['OC'].add(subfield.replace('(OCoLC)', '').strip())
 
             # 041
             # LA    # Languages
