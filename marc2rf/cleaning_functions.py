@@ -48,7 +48,8 @@ RE_NUMERAL = re.compile('[1-9]+[0-9]*|[cdilmvx]+')
 
 
 def clean(string, hyphens=True, space=True):
-    """Function to clean punctuation and normalize Unicode."""
+    """Function to clean punctuation, unescape HTML, and normalize Unicode."""
+    string = html.unescape(string)
     string = re.sub(u'[\u0022\u055A\u05F4\u2018\u2019\u201A\u201B\u201C\u201D\u201E\u201F\u275B\u275C\u275D\u275E\uFF07]', '\'', string)
     string = re.sub(
         u'[\u0000-\u0009\u000A-\u000f\u0010-\u0019\u001A-\u001F\u0080-\u0089\u008A-\u008F\u0090-\u0099\u009A-\u009F\u2028\u2029]+',
