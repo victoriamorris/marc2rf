@@ -349,7 +349,10 @@ class Converter(object):
                 if self.output_fields.values['ES']: readme.write(' and ')
             if self.output_fields.values['ES']: readme.write('ESTC citation number')
             readme.write(') ')
-        readme.write('for the full metadata record held in the British Library\'s online catalogues. ')
+        if self.estc:
+            readme.write('for the full metadata record held in the English Short Title Catalogue (ESTC). ')
+        else:
+            readme.write('for the full metadata record held in the British Library\'s online catalogues. ')
         if self.estc:
             readme.write('The English Short Title Catalogue (ESTC) lists items published mainly in the British Isles '
                          'and North America between 1473 and 1800, from the collections of the British Library and '
