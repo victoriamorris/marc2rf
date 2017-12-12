@@ -651,7 +651,7 @@ class Publishers(PublisherMultiRegex):
         r'(?P<Lanthorn>^lanthorn\s*press.*)',
         r'(?P<LaUUU0020More>^la\s*more\s*press.*)',
         r'(?P<Laverock>^laverock\s*press.*)',
-        r'(?P<LawrenceUUU0020&UUU0020Wishart>^lawren[cde]*.*?\bwishart.*)',
+        r'(?P<LawrenceUUU0020UUU0026UUU0020Wishart>^lawren[cde]*.*?\bwishart.*)',
         r'(?P<Legend>^legend\s+(p).*)',
         r'(?P<LEGENDAUUU002CUUU0020EuropeanUUU0020HumanitiesUUU0020ResearchUUU0020Centre>^legend.*?european.*?humanities.*)',
         r'(?P<LeicesterUUU0020Mercury>^leicester mercury.*)',
