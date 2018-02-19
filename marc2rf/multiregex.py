@@ -319,7 +319,7 @@ class Genres(MultiRegex):
         r'(?P<PrayerUUU0020orUUU0020devotionalUUU0020book>.*\b(prayer|devotion).*)',
         r'(?P<Poster>.*\bposter.*)',
         r'(?P<Postcard>.*\bpost.*?\bcard.*)',
-        r'(?P<PoetryorUUU0020verse>.*\b(poetry|verse).*)',
+        r'(?P<PoetryUUU0020orUUU0020verse>.*\b(poetry|verse).*)',
         r'(?P<Playbill>.*\bplay[\-\s]*bill.*)',
         r'(?P<PlanUUU0020orUUU0020view>.*\b(plan|view).*)',
         r'(?P<Picture>.*\bpicture.*)',
