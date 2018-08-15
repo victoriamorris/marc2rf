@@ -59,6 +59,7 @@ class Output:
                 'IR': 'International Standard Recording Code (ISRC)',  # NEW
                 'IA': 'International Article Number (EAN)',   # NEW
                 'PN': 'Publisher number',
+                'OI': 'Other identifier',   # NEW
                 'AA': 'Name',
                 'AD': 'Dates associated with name',
                 'AT': 'Type of name',
@@ -116,6 +117,8 @@ class Output:
                 'TA': 'Target audience',  # NEW
                 'LF': 'Literary form',  # NEW
                 'LA': 'Languages',
+                'LO': 'Language of original',  # NEW
+                'LI': 'Language of intermediate translations',  # NEW
                 'CO': 'Contents',
                 'AB': 'Abstract',
                 'NN': 'Notes',
@@ -165,15 +168,16 @@ class Output:
                 ('NN', True), ('SE', True), ('SN', True), ('CO', True), ('BN', True), ('ID', True),
                 # END OF FIELDS USED BY THIS PROFILE
                 ('RT', False), ('CT', False), ('LC', False), ('OC', False), ('ES', False), ('AK', False), ('IS', False),
-                ('IL', False), ('IM', False), ('IR', False), ('IA', False), ('PN', False), ('AT', False), ('AR', False),
+                ('IL', False), ('IM', False), ('IR', False), ('IA', False), ('PN', False), ('OI', False), ('AT', False),
+                ('AR', False),
                 ('II', False), ('VF', False), ('TU', False), ('TK', False), ('TV', False), ('S1', False), ('S2', False),
                 ('PC', False), ('PD', False), ('PU', False), ('PG', False), ('P1', False), ('P2', False), ('FA', False),
                 ('HF', False), ('HL', False), ('HA', False), ('FC', False), ('FF', False), ('ED', False), ('SC', False),
                 ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('LN', False), ('SM', False), ('SD', False),
                 ('SO', False), ('BU', False), ('IO', False), ('CL', False), ('G1', False), ('G2', False), ('CG', False),
-                ('CC', False), ('CF', False), ('CY', False), ('GE', False), ('TA', False), ('LF', False), ('AB', False),
-                ('CA', False), ('MA', False), ('PV', False), ('RF', False), ('NL', False), ('8F', False), ('ND', False),
-                ('EL', False), ('SX', False),
+                ('CC', False), ('CF', False), ('CY', False), ('GE', False), ('TA', False), ('LF', False), ('LO', False),
+                ('LI', False), ('AB', False), ('CA', False), ('MA', False), ('PV', False), ('RF', False), ('NL', False),
+                ('8F', False), ('ND', False), ('EL', False), ('SX', False),
             ])
         elif profile == 'C':
             self.headings['AA'] = 'Composer'
@@ -186,14 +190,14 @@ class Output:
                 ('SE', True), ('SN', True), ('IB', True), ('IM', True), ('PN', True), ('SM', True),
                 # END OF FIELDS USED BY THIS PROFILE
                 ('RT', False), ('CT', False), ('MT', False), ('BN', False), ('LC', False), ('OC', False), ('ES', False),
-                ('AK', False), ('IS', False), ('IL', False), ('IR', False), ('IA', False), ('AT', False), ('AR', False),
-                ('II', False), ('VF', False), ('TK', False), ('S1', False), ('S2', False), ('PJ', False), ('PG', False),
-                ('P1', False), ('P2', False), ('FA', False), ('HF', False), ('HL', False), ('HA', False), ('FC', False),
-                ('FF', False), ('SC', False), ('JK', False), ('CD', False), ('PR', False), ('DW', False), ('LN', False),
-                ('SD', False), ('SO', False), ('BU', False), ('IO', False), ('CL', False), ('G1', False), ('G2', False),
-                ('CG', False), ('CC', False), ('CF', False), ('CY', False), ('GE', False), ('TA', False), ('LF', False),
-                ('LA', False), ('AB', False), ('CA', False), ('PV', False), ('NL', False), ('8F', False), ('ND', False),
-                ('EL', False), ('SX', False),
+                ('AK', False), ('IS', False), ('IL', False), ('IR', False), ('IA', False), ('OI', False), ('AT', False),
+                ('AR', False), ('II', False), ('VF', False), ('TK', False), ('S1', False), ('S2', False), ('PJ', False),
+                ('PG', False), ('P1', False), ('P2', False), ('FA', False), ('HF', False), ('HL', False), ('HA', False),
+                ('FC', False), ('FF', False), ('SC', False), ('JK', False), ('CD', False), ('PR', False), ('DW', False),
+                ('LN', False), ('SD', False), ('SO', False), ('BU', False), ('IO', False), ('CL', False), ('G1', False),
+                ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False), ('GE', False), ('TA', False),
+                ('LF', False), ('LA', False), ('LO', False), ('LI', False), ('AB', False), ('CA', False), ('PV', False),
+                ('NL', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
             ])
         elif profile == 'E':
             self.values = OrderedDict([
@@ -203,14 +207,14 @@ class Output:
                 # END OF FIELDS USED BY THIS PROFILE
                 ('ID', False), ('CT', False), ('MT', False), ('BN', False), ('LC', False), ('OC', False), ('AK', False),
                 ('IB', False), ('IS', False), ('IL', False), ('IM', False), ('IR', False), ('IA', False), ('PN', False),
-                ('II', False), ('VF', False), ('TU', False), ('TK', False), ('TV', False), ('S1', False), ('S2', False),
-                ('SE', False), ('SN', False), ('PU', False), ('PJ', False), ('PG', False), ('P1', False), ('P2', False),
-                ('FA', False), ('HF', False), ('HL', False), ('HA', False), ('FC', False), ('FF', False), ('ED', False),
-                ('SC', False), ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('PR', False), ('DW', False),
-                ('LN', False), ('SM', False), ('SD', False), ('SO', False), ('BU', False), ('IO', False), ('CL', False),
-                ('G1', False), ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False), ('GE', False),
-                ('TA', False), ('LF', False), ('CO', False), ('AB', False), ('CA', False), ('MA', False), ('NL', False),
-                ('8F', False), ('ND', False), ('EL', False), ('SX', False),
+                ('OI', False), ('II', False), ('VF', False), ('TU', False), ('TK', False), ('TV', False), ('S1', False),
+                ('S2', False), ('SE', False), ('SN', False), ('PU', False), ('PJ', False), ('PG', False), ('P1', False),
+                ('P2', False), ('FA', False), ('HF', False), ('HL', False), ('HA', False), ('FC', False), ('FF', False),
+                ('ED', False), ('SC', False), ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('PR', False),
+                ('DW', False), ('LN', False), ('SM', False), ('SD', False), ('SO', False), ('BU', False), ('IO', False),
+                ('CL', False), ('G1', False), ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False),
+                ('GE', False), ('TA', False), ('LF', False), ('LO', False), ('LI', False), ('CO', False), ('AB', False),
+                ('CA', False), ('MA', False), ('NL', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
             ])
         elif profile == 'N':
             self.headings['ID'] = 'Title ID'
@@ -223,14 +227,14 @@ class Output:
                 ('HL', True), ('HA', True), ('BU', True), ('IO', True), ('CL', True), ('NL', True),
                 # END OF FIELDS USED BY THIS PROFILE
                 ('RT', False), ('CT', False), ('ES', False), ('AK', False), ('IB', False), ('IL', False), ('IM', False),
-                ('IR', False), ('IA', False), ('PN', False), ('AA', False), ('AD', False), ('AT', False), ('AR', False),
-                ('II', False), ('VF', False), ('AN', False), ('TT', False), ('TU', False), ('TK', False), ('SE', False),
-                ('SN', False), ('PB', False), ('PD', False), ('PU', False), ('PJ', False), ('PG', False), ('FF', False),
-                ('DS', False), ('SC', False), ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('PR', False),
-                ('DW', False), ('LN', False), ('SM', False), ('SD', False), ('SO', False), ('SU', False), ('CC', False),
-                ('CF', False), ('GE', False), ('TA', False), ('LF', False), ('LA', False), ('CO', False), ('AB', False),
-                ('NN', False), ('CA', False), ('MA', False), ('PV', False), ('RF', False), ('8F', False), ('ND', False),
-                ('EL', False), ('SX', False),
+                ('IR', False), ('IA', False), ('PN', False), ('OI', False), ('AA', False), ('AD', False), ('AT', False),
+                ('AR', False), ('II', False), ('VF', False), ('AN', False), ('TT', False), ('TU', False), ('TK', False),
+                ('SE', False), ('SN', False), ('PB', False), ('PD', False), ('PU', False), ('PJ', False), ('PG', False),
+                ('FF', False), ('DS', False), ('SC', False), ('JK', False), ('CD', False), ('MF', False), ('MG', False),
+                ('PR', False), ('DW', False), ('LN', False), ('SM', False), ('SD', False), ('SO', False), ('SU', False),
+                ('CC', False), ('CF', False), ('GE', False), ('TA', False), ('LF', False), ('LA', False), ('LO', False),
+                ('LI', False), ('CO', False), ('AB', False), ('NN', False), ('CA', False), ('MA', False), ('PV', False),
+                ('RF', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
             ])
         elif profile == 'R':
             self.values = OrderedDict([
@@ -241,30 +245,30 @@ class Output:
                 ('MT', True), ('BN', True), ('LC', True), ('OC', True),
                 # END OF FIELDS USED BY THIS PROFILE
                 ('ES', False), ('AK', False), ('IL', False), ('IM', False), ('IR', False), ('IA', False), ('PN', False),
-                ('II', False), ('VF', False), ('TU', False), ('TK', False), ('S1', False), ('S2', False), ('PJ', False),
-                ('PG', False), ('P1', False), ('P2', False), ('FA', False), ('HF', False), ('HL', False), ('HA', False),
-                ('FC', False), ('FF', False), ('SC', False), ('JK', False), ('CD', False), ('MF', False), ('MG', False),
-                ('PR', False), ('LN', False), ('SM', False), ('BU', False), ('IO', False), ('CL', False), ('G1', False),
-                ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False), ('TA', False), ('LF', False),
-                ('CO', False), ('AB', False), ('CA', False), ('MA', False), ('PV', False), ('RF', False), ('NL', False),
-                ('8F', False), ('ND', False), ('EL', False), ('SX', False),
+                ('OI', False), ('II', False), ('VF', False), ('TU', False), ('TK', False), ('S1', False), ('S2', False),
+                ('PJ', False), ('PG', False), ('P1', False), ('P2', False), ('FA', False), ('HF', False), ('HL', False),
+                ('HA', False), ('FC', False), ('FF', False), ('SC', False), ('JK', False), ('CD', False), ('MF', False),
+                ('MG', False), ('PR', False), ('LN', False), ('SM', False), ('BU', False), ('IO', False), ('CL', False),
+                ('G1', False), ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False), ('TA', False),
+                ('LF', False), ('LO', False), ('LI', False), ('CO', False), ('AB', False), ('CA', False), ('MA', False),
+                ('PV', False), ('RF', False), ('NL', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
             ])
 
         else:
             self.values = OrderedDict([
                 ('ID', True),  ('RT', True),  ('CT', False), ('MT', False), ('BN', True),  ('LC', False), ('OC', False),
                 ('ES', False), ('AK', False), ('IB', True),  ('IS', False), ('IL', False), ('IM', False), ('IR', False),
-                ('IA', False), ('PN', False), ('AA', True),  ('AD', True),  ('AT', True),  ('AR', True),  ('II', False),
-                ('VF', False), ('AN', True),  ('TT', True),  ('TU', False), ('TK', False), ('TV', True),  ('S1', False),
-                ('S2', False), ('SE', True),  ('SN', True),  ('PC', True),  ('PP', True),  ('PB', True),  ('PD', True),
-                ('PU', False), ('PJ', False), ('PG', False), ('P1', False), ('P2', False), ('FA', False), ('HF', False),
-                ('HL', False), ('HA', False), ('FC', False), ('FF', False), ('ED', True),  ('DS', True),  ('SC', False),
-                ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('PR', False), ('DW', True),  ('LN', False),
-                ('SM', True),  ('SD', False), ('SO', False), ('BU', False), ('IO', False), ('CL', False), ('SU', True),
-                ('G1', False), ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False), ('GE', True),
-                ('TA', False), ('LF', False), ('LA', True),  ('CO', False), ('AB', False), ('NN', True),  ('CA', False),
-                ('MA', False), ('PV', False), ('RF', False), ('NL', False), ('8F', False), ('ND', False), ('EL', False),
-                ('SX', False),
+                ('IA', False), ('PN', False), ('OI', False), ('AA', True),  ('AD', True),  ('AT', True),  ('AR', True),
+                ('II', False), ('VF', False), ('AN', True),  ('TT', True),  ('TU', False), ('TK', False), ('TV', True),
+                ('S1', False), ('S2', False), ('SE', True),  ('SN', True),  ('PC', True),  ('PP', True),  ('PB', True),
+                ('PD', True), ('PU', False), ('PJ', False), ('PG', False), ('P1', False), ('P2', False), ('FA', False),
+                ('HF', False), ('HL', False), ('HA', False), ('FC', False), ('FF', False), ('ED', True),  ('DS', True),
+                ('SC', False), ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('PR', False), ('DW', True),
+                ('LN', False), ('SM', True),  ('SD', False), ('SO', False), ('BU', False), ('IO', False), ('CL', False),
+                ('SU', True), ('G1', False), ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False),
+                ('GE', True), ('TA', False), ('LF', False), ('LA', True),  ('LO', False), ('LI', False), ('CO', False),
+                ('AB', False), ('NN', True), ('CA', False), ('MA', False), ('PV', False), ('RF', False), ('NL', False),
+                ('8F', False), ('ND', False), ('EL', False), ('SX', False),
             ])
         if initiate:
             # Do I want to exclude more fields here?
@@ -679,10 +683,11 @@ class Converter(object):
             # IM    # International Standard Music Number (ISMN)
             # IR    # International Standard Recording Code (ISRC)
             # IA    # International Article Number (EAN)
+            # OI    # Other Identifier
             for field in record.get_fields('024'):
-                if field.indicator1 in ['0', '2', '3']:
+                if field.indicator1 in ['0', '1', '2', '3', '7']:
                     for subfield in field.get_subfields('a'):
-                        subfield = re.sub(r'[^0-9X]', '', subfield.upper())
+                        subfield = subfield.strip()
                         if subfield != '':
                             if field.indicator1 == '0':
                                 output.values['IR'].add(subfield)
@@ -690,6 +695,8 @@ class Converter(object):
                                 output.values['IM'].add(subfield)
                             elif field.indicator1 == '3':
                                 output.values['IA'].add(subfield)
+                            elif field.indicator1 in ['1', '4', '7']:
+                                output.values['OI'].add(subfield)
 
             # 028
             # PN    # Publisher number
@@ -751,6 +758,22 @@ class Converter(object):
                     else:
                         if subfield != '':
                             output.values['LA'].add(subfield)
+                for subfield in field.get_subfields('h'):
+                    try:
+                        subfield = languages.get(subfield, '')
+                    except:
+                        pass
+                    else:
+                        if subfield != '':
+                            output.values['LO'].add(subfield)
+                for subfield in field.get_subfields('k'):
+                    try:
+                        subfield = languages.get(subfield, '')
+                    except:
+                        pass
+                    else:
+                        if subfield != '':
+                            output.values['LI'].add(subfield)
 
             # 047
             # MF    # Musical form
@@ -1515,6 +1538,7 @@ class Converter(object):
                             self.main_cat = 'M' in vals
                             if 'I' in vals:
                                 self.output_fields.headings['PD'] = 'Date of creation/publication'
+                                self.output_fields.headings['PP'] = 'Place of creation/publication'
                                 self.output_fields.headings['PU'] = 'Date of publication (not standardised)'
             msgfile.close()
 
@@ -1556,13 +1580,15 @@ class Converter(object):
                     for v in ['AK', 'PV', 'RF']:
                         self.output_fields.values[v] = True
                     self.output_fields.headings['PD'] = 'Date of creation/publication'
+                    self.output_fields.headings['PP'] = 'Place of creation/publication'
                     self.output_fields.headings['PU'] = 'Date of creation/publication (not standardised)'
                 else:
                     self.output_fields.values['AK'] = False
 
-                # Remove BNB-specific columns
-                for v in ['II', 'VF']:
-                    self.output_fields.values[v] = False
+                # Remove IAMS/BNB-specific columns
+                if not(self.bnb or self.iams):
+                    for v in ['II', 'VF']:
+                        self.output_fields.values[v] = False
 
                 # Remove ESTC-specific columns if no ESTC records are present
                 if not self.estc:
@@ -1596,6 +1622,7 @@ class Converter(object):
                 self.estc = get_boolean('Does the input data contain ESTC records? (Y/N):')
                 if self.iams:
                     self.output_fields.headings['PD'] = 'Date of creation/publication'
+                    self.output_fields.headings['PP'] = 'Place of creation/publication'
                     self.output_fields.headings['PU'] = 'Date of creation/publication (not standardised)'
 
                 print('\nChoose the optional columns: \n')
@@ -1849,10 +1876,10 @@ class Converter(object):
                                 output_string += '","'
                                 if item[3] != '': output_string += item[3]  # Name role
                                 output_string += '","'
-                                if self.bnb and self.output_fields.values['II']:
+                                if (self.bnb or self.iams) and self.output_fields.values['II']:
                                     if item[4] != '': output_string += item[4]  # ISNI
                                     output_string += '","'
-                                if self.bnb and self.output_fields.values['VF']:
+                                if (self.bnb or self.iams) and self.output_fields.values['VF']:
                                     if item[5] != '': output_string += item[5]  # VIAF
                                     output_string += '","'
                                 s = ''
