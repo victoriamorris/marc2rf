@@ -2286,11 +2286,11 @@ class ConfigWriter(object):
                         for j in range(len(subfields)):
                             s = clean_search_string(subfields[j], escape=False)
                             if len(s) >= 2:
-                                temp = add_string('(FIELD 100-499 SUBFIELD {} CONTAINS CASE_INSENSITIVE "{}")'.format(
+                                temp = add_string('SUBFIELD {} CONTAINS CASE_INSENSITIVE "{}"'.format(
                                     s[0], clean_search_string(s[1:])), temp, ' AND ',
                                     allow_repeats=True)
-                        output_string = add_string(temp, output_string, '\n OR ', brackets=True)
-                        output_string = add_string(temp.replace('FIELD 100-499 SUBFIELD', 'FIELD 600-799 SUBFIELD'), output_string, '\n OR ', brackets=True)
+                        output_string = add_string('FIELD 100-499  {}'.format(temp), output_string, '\n OR ', brackets=True)
+                        output_string = add_string('FIELD 600-799  {}'.format(temp), output_string, '\n OR ', brackets=True)
                     else:
                         search_string = clean_search_string(search_string)
                         output_string = add_string(
