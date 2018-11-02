@@ -1791,7 +1791,10 @@ class Converter(object):
                                                for tag in output.values) + '"\n')
 
             elif self.profile == 'M':
-                if not (any(s in ''.join(output.values['STA']).lower() for s in
+                if 'STA' not in output.values:
+                    records.write('"' + '","'.join((' ; '.join(str(p) for p in output.values[tag]).strip())
+                                                   for tag in sorted(output.values)) + '"\n')
+                elif not (any(s in ''.join(output.values['STA']).lower() for s in
                             ['deleted', 'suppressed', 'prepublication'])) and len(output.values['001']) > 0:
                     records.write('"' + '","'.join((' ; '.join(str(p) for p in output.values[tag]).strip())
                                                    for tag in sorted(output.values) if tag != 'STA') + '"\n')
