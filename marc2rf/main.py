@@ -221,20 +221,21 @@ class Output:
             self.headings['TV'] = 'Publication title'
             self.headings['MT'] = 'Carrier type'
             self.values = OrderedDict([
-                ('ID', True), ('OC', True), ('LC', True), ('BN', True), ('IS', True), ('TV', True), ('S1', True),
-                ('S2', True), ('MT', True), ('G1', True), ('G2', True), ('PP', True), ('PC', True), ('CG', True),
-                ('CY', True), ('P1', True), ('P2', True), ('FA', True), ('ED', True), ('FC', True), ('HF', True),
-                ('HL', True), ('HA', True), ('BU', True), ('IO', True), ('CL', True), ('NL', True),
+                ('ID', True), ('ND', True), ('OC', True), ('LC', True), ('BN', True), ('IS', True), ('TV', True),
+                ('S1', True), ('S2', True), ('MT', True), ('G1', True), ('G2', True), ('PP', True), ('PC', True),
+                ('CG', True), ('CY', True), ('P1', True), ('P2', True), ('FA', True), ('ED', True), ('FC', True),
+                ('PB', True), ('HF', True), ('HL', True), ('HA', True), ('BU', True), ('IO', True), ('CL', True),
+                ('NL', True),
                 # END OF FIELDS USED BY THIS PROFILE
                 ('RT', False), ('CT', False), ('ES', False), ('AK', False), ('IB', False), ('IL', False), ('IM', False),
                 ('IR', False), ('IA', False), ('PN', False), ('OI', False), ('AA', False), ('AD', False), ('AT', False),
                 ('AR', False), ('II', False), ('VF', False), ('AN', False), ('TT', False), ('TU', False), ('TK', False),
-                ('SE', False), ('SN', False), ('PB', False), ('PD', False), ('PU', False), ('PJ', False), ('PG', False),
+                ('SE', False), ('SN', False), ('PD', False), ('PU', False), ('PJ', False), ('PG', False),
                 ('FF', False), ('DS', False), ('SC', False), ('JK', False), ('CD', False), ('MF', False), ('MG', False),
                 ('PR', False), ('DW', False), ('LN', False), ('SM', False), ('SD', False), ('SO', False), ('SU', False),
                 ('CC', False), ('CF', False), ('GE', False), ('TA', False), ('LF', False), ('LA', False), ('LO', False),
                 ('LI', False), ('CO', False), ('AB', False), ('NN', False), ('CA', False), ('MA', False), ('PV', False),
-                ('RF', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
+                ('RF', False), ('8F', False), ('EL', False), ('SX', False),
             ])
         elif profile == 'R':
             self.values = OrderedDict([
@@ -2289,11 +2290,13 @@ class ConfigWriter(object):
                         for j in range(len(subfields)):
                             s = clean_search_string(subfields[j], escape=False)
                             if len(s) >= 2:
+                                #temp = add_string('(FIELD 100-499 SUBFIELD {} CONTAINS CASE_INSENSITIVE "{}")'.format(
                                 temp = add_string('SUBFIELD {} CONTAINS CASE_INSENSITIVE "{}"'.format(
                                     s[0], clean_search_string(s[1:])), temp, ' AND ',
                                     allow_repeats=True)
                         output_string = add_string('FIELD 100-499  {}'.format(temp), output_string, '\n OR ', brackets=True)
                         output_string = add_string('FIELD 600-799  {}'.format(temp), output_string, '\n OR ', brackets=True)
+                        #output_string = add_string(temp.replace('FIELD 100-499 SUBFIELD', 'FIELD 600-799 SUBFIELD'), output_string, '\n OR ', brackets=True)
                     else:
                         search_string = clean_search_string(search_string)
                         output_string = add_string(

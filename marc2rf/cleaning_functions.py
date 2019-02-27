@@ -3,6 +3,7 @@
 """Data cleaning functions used in the Researcher Format transformation."""
 
 # Import required modules
+import html
 import os
 import sys
 import unicodedata
@@ -79,6 +80,7 @@ def quick_clean(string, hyphens=True):
     string = string.replace('( ', '(').replace(' )', ')')
     string = string.replace(' ,', ',').replace(',,', ',').replace(',.', '.').replace('.,', ',')
     string = string.replace('. [', ' [').replace(' : (', ' (').replace('= =', '=').replace('= :', '=').replace('+,', '+')
+    string = string.replace('number more', 'no more')
     return string
 
 

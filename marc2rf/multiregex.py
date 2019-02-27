@@ -169,7 +169,7 @@ class Abbreviations(MultiRegex):
         r'(?P<nakladateUUU0142stvUUU00ed>^nakl(ad)?(ate)?\.*$)',      # Czech, nakladatełství
         r'(?P<Neudruck>^neudr(uck)?\.*$)',      # German, reprint
         r'(?P<nouvelle>^nouv(elle)?\.*$)',      # French
-        r'(?P<numbers>^n-*(o|ro?|um+b?ero?)s*\.*$)',
+        r'(?P<numbers>^n-*(o\.|ro?|um+b?ero?)s*\.*$)',
         r'(?P<oblong>^obl(ong)?\.*$)',
         r'(?P<Originalausgabe>^Originalausg(abe)?\.*$)',        # German
         r'(?P<pages>^pp+(age)?s*\.*$)',
