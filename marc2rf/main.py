@@ -1812,8 +1812,6 @@ class Converter(object):
                                   'montserrat', 'pitcairn', 'saint helena', 'sark', 'south georgia', 'south sandwich',
                                   'tristan da cunha', 'turks and caicos', 'britain', 'british', 'united kingdom',
                                   'england', 'wales', 'scotland', 'ireland']) or len(output.values['PC']) == 0):
-                    # Material type (column label Carrier type) must be empty for Newspaper records. 2016-07-06
-                    output.values['MT'] = []
                     # Delimiter for Newspaper records is | but for all other outputs is ;
                     output_string = '"'
                     for v in self.output_fields.values:
