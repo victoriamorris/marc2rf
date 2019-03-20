@@ -1801,17 +1801,17 @@ class Converter(object):
                                                    for tag in sorted(output.values) if tag != 'STA') + '"\n')
 
             elif self.profile == 'N':
-                # Limit newspaper selection to UK, Ireland and current UK dependencies
+                # Limit to UK, Ireland and current UK dependencies removed 2019-03-20
+                '''if any(s in ' '.join(output.values['PC']).lower() for s in
+                       ['akrotiri', 'alderney', 'anguilla', 'ascension', 'bermuda', 'cayman',
+                        'channel island', 'dhekelia', 'falkland', 'gibraltar', 'guernsey', 'isle of man',
+                        'montserrat', 'pitcairn', 'saint helena', 'sark', 'south georgia', 'south sandwich',
+                        'tristan da cunha', 'turks and caicos', 'britain', 'british', 'united kingdom',
+                        'england', 'wales', 'scotland', 'ireland']) or len(output.values['PC']) == 0:'''
                 # Records must have shelfmarks and not have 'L7' in field AQN $a or 903 $9 (indicated by 8F)
                 if not (any(s in ''.join(output.values['SX']).lower() for s in
                             ['deleted', 'suppressed', 'prepublication'])) \
-                        and len(output.values['ID']) > 0 and 'Y' in output.values['8F'] \
-                        and (any(s in ' '.join(output.values['PC']).lower() for s in
-                                 ['akrotiri', 'alderney', 'anguilla', 'ascension', 'bermuda', 'cayman',
-                                  'channel island', 'dhekelia', 'falkland', 'gibraltar', 'guernsey', 'isle of man',
-                                  'montserrat', 'pitcairn', 'saint helena', 'sark', 'south georgia', 'south sandwich',
-                                  'tristan da cunha', 'turks and caicos', 'britain', 'british', 'united kingdom',
-                                  'england', 'wales', 'scotland', 'ireland']) or len(output.values['PC']) == 0):
+                        and len(output.values['ID']) > 0 and 'Y' in output.values['8F']:
                     # Delimiter for Newspaper records is | but for all other outputs is ;
                     output_string = '"'
                     for v in self.output_fields.values:
