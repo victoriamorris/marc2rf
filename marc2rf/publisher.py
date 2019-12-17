@@ -404,7 +404,7 @@ class Publishers(PublisherMultiRegex):
         r'(?P<EncyclopaediaUUU0020Britannica>^encyclo.*?britan*ic*a.*)',
         r'(?P<EngineeringUUU0020EquipmentUUU0020UsersUUU0027UUU0020Association>^engineering equipment users.? assoc.*)',
         r'(?P<EpochUUU0020Times>^epoch times.*)',
-        r'(?P<Epworth>^epworth\s*press.*)',
+        r'(?P<EpworthUUU0020Press>^epworth\s*press.*)',
         r'(?P<Equinox>^equinox(.*?\b(press|pub).*)?)',
         r'(?P<Esperanto>^esperanto\s*pub.*)',
         r'(?P<EssexUUU0020Chronicle>^essex chronicle.*)',
