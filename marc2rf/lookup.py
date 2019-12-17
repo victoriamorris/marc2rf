@@ -52,7 +52,7 @@ PLACES_ENGLAND = ['Accrington', 'Aldermaston', 'Alfreton', 'Alnwick', 'Alton', '
                   'Chester', 'Chesterfield', 'Chichester', 'Chippenham', 'Chorley', 'Clacton-on-Sea', 'Cleethorpes',
                   'Clitheroe', 'Cockermouth', 'Colchester', 'Colne', 'Congleton', 'Consett', 'Coventry', 'Crediton',
                   'Dalton-in-Furness', 'Derby', 'Devizes', 'Dewsbury', 'Douglas', 'Driffield', 'Dudley', 'Dunstable',
-                  'Egham', 'Ellesmere', 'Enfield', 'Epping', 'Epsom', 'Epworth', 'Evesham', 'Exeter', 'Exmouth',
+                  'Egham', 'Ellesmere', 'Enfield', 'Epping', 'Epsom', 'Evesham', 'Exeter', 'Exmouth',
                   'Fakenham', 'Falmouth', 'Farnborough', 'Farnham', 'Faversham', 'Felixstowe', 'Fleetwood', 'Frodsham',
                   'Frome', 'Gainsborough', 'Garstang', 'Gateshead', 'Gloucester', 'Godalming', 'Goole', 'Gosport',
                   'Grantham', 'Gravesend', 'Grimsby', 'Hammersmith', 'Harlow', 'Harpenden', 'Harrogate', 'Hartford',
