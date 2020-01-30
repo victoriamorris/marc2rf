@@ -119,6 +119,7 @@ class Output:
                 'LA': 'Languages',
                 'LO': 'Language of original',  # NEW
                 'LI': 'Language of intermediate translations',  # NEW
+                'NG': 'Language notes',  # NEW
                 'CO': 'Contents',
                 'AB': 'Abstract',
                 'NN': 'Notes',
@@ -176,8 +177,8 @@ class Output:
                 ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('LN', False), ('SM', False), ('SD', False),
                 ('SO', False), ('BU', False), ('IO', False), ('CL', False), ('G1', False), ('G2', False), ('CG', False),
                 ('CC', False), ('CF', False), ('CY', False), ('GE', False), ('TA', False), ('LF', False), ('LO', False),
-                ('LI', False), ('AB', False), ('CA', False), ('MA', False), ('PV', False), ('RF', False), ('NL', False),
-                ('8F', False), ('ND', False), ('EL', False), ('SX', False),
+                ('LI', False), ('NG', False), ('AB', False), ('CA', False), ('MA', False), ('PV', False), ('RF', False),
+                ('NL', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
             ])
         elif profile == 'C':
             self.headings['AA'] = 'Composer'
@@ -196,8 +197,8 @@ class Output:
                 ('FC', False), ('FF', False), ('SC', False), ('JK', False), ('CD', False), ('PR', False), ('DW', False),
                 ('LN', False), ('SD', False), ('SO', False), ('BU', False), ('IO', False), ('CL', False), ('G1', False),
                 ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False), ('GE', False), ('TA', False),
-                ('LF', False), ('LA', False), ('LO', False), ('LI', False), ('AB', False), ('CA', False), ('PV', False),
-                ('NL', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
+                ('LF', False), ('LA', False), ('LO', False), ('LI', False), ('NG', False), ('AB', False), ('CA', False),
+                ('PV', False), ('NL', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
             ])
         elif profile == 'E':
             self.values = OrderedDict([
@@ -213,8 +214,9 @@ class Output:
                 ('ED', False), ('SC', False), ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('PR', False),
                 ('DW', False), ('LN', False), ('SM', False), ('SD', False), ('SO', False), ('BU', False), ('IO', False),
                 ('CL', False), ('G1', False), ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False),
-                ('GE', False), ('TA', False), ('LF', False), ('LO', False), ('LI', False), ('CO', False), ('AB', False),
-                ('CA', False), ('MA', False), ('NL', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
+                ('GE', False), ('TA', False), ('LF', False), ('LO', False), ('LI', False), ('NG', False), ('CO', False),
+                ('AB', False), ('CA', False), ('MA', False), ('NL', False), ('8F', False), ('ND', False), ('EL', False),
+                ('SX', False),
             ])
         elif profile == 'N':
             self.headings['ID'] = 'Title ID'
@@ -234,8 +236,8 @@ class Output:
                 ('FF', False), ('DS', False), ('SC', False), ('JK', False), ('CD', False), ('MF', False), ('MG', False),
                 ('PR', False), ('DW', False), ('LN', False), ('SM', False), ('SD', False), ('SO', False), ('SU', False),
                 ('CC', False), ('CF', False), ('GE', False), ('TA', False), ('LF', False), ('LA', False), ('LO', False),
-                ('LI', False), ('CO', False), ('AB', False), ('NN', False), ('CA', False), ('MA', False), ('PV', False),
-                ('RF', False), ('8F', False), ('EL', False), ('SX', False),
+                ('LI', False), ('NG', False), ('CO', False), ('AB', False), ('NN', False), ('CA', False), ('MA', False),
+                ('PV', False), ('RF', False), ('8F', False), ('EL', False), ('SX', False),
             ])
         elif profile == 'R':
             self.values = OrderedDict([
@@ -251,8 +253,9 @@ class Output:
                 ('HA', False), ('FC', False), ('FF', False), ('SC', False), ('JK', False), ('CD', False), ('MF', False),
                 ('MG', False), ('PR', False), ('LN', False), ('SM', False), ('BU', False), ('IO', False), ('CL', False),
                 ('G1', False), ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False), ('TA', False),
-                ('LF', False), ('LO', False), ('LI', False), ('CO', False), ('AB', False), ('CA', False), ('MA', False),
-                ('PV', False), ('RF', False), ('NL', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
+                ('LF', False), ('LO', False), ('LI', False), ('NG', False), ('CO', False), ('AB', False), ('CA', False),
+                ('MA', False), ('PV', False), ('RF', False), ('NL', False), ('8F', False), ('ND', False), ('EL', False),
+                ('SX', False),
             ])
 
         else:
@@ -267,9 +270,9 @@ class Output:
                 ('SC', False), ('JK', False), ('CD', False), ('MF', False), ('MG', False), ('PR', False), ('DW', True),
                 ('LN', False), ('SM', True),  ('SD', False), ('SO', False), ('BU', False), ('IO', False), ('CL', False),
                 ('SU', True), ('G1', False), ('G2', False), ('CG', False), ('CC', False), ('CF', False), ('CY', False),
-                ('GE', True), ('TA', False), ('LF', False), ('LA', True),  ('LO', False), ('LI', False), ('CO', False),
-                ('AB', False), ('NN', True), ('CA', False), ('MA', False), ('PV', False), ('RF', False), ('NL', False),
-                ('8F', False), ('ND', False), ('EL', False), ('SX', False),
+                ('GE', True), ('TA', False), ('LF', False), ('LA', True),  ('LO', False), ('LI', False), ('NG', False),
+                ('CO', False), ('AB', False), ('NN', True), ('CA', False), ('MA', False), ('PV', False), ('RF', False),
+                ('NL', False), ('8F', False), ('ND', False), ('EL', False), ('SX', False),
             ])
         if initiate:
             # Do I want to exclude more fields here?
@@ -718,7 +721,7 @@ class Converter(object):
                     output.values['SC'].add(scale)
                 coordinates = ', '.join(field.get_subfields('d', 'e', 'f', 'g', cleaning=False))
                 if coordinates != '':
-                    output.values['CD'].add(scale)
+                    output.values['CD'].add(coordinates)
                 notes = ''
                 for subfield in field:
                     if subfield[0] in ['c', 'h', 'j', 'k', 'm', 'n', 'p', 'r', 's', 't', 'x', 'y', 'z'] \
@@ -754,27 +757,29 @@ class Converter(object):
             # LA    # Languages
             for field in record.get_fields('041'):
                 for subfield in field.get_subfields('a', 'b', 'd', 'e', 'f', 'g', 'j', 'm'):
-                    try: subfield = languages.get(subfield, '')
-                    except: pass
-                    else:
-                        if subfield != '':
-                            output.values['LA'].add(subfield)
+                    if len(subfield) % 3 == 0:
+                        for s in [subfield[i:i+3] for i in range(0, len(subfield), 3)]:
+                            try: s = languages.get(s, '')
+                            except: pass
+                            else:
+                                if s != '':
+                                    output.values['LA'].add(s)
                 for subfield in field.get_subfields('h'):
-                    try:
-                        subfield = languages.get(subfield, '')
-                    except:
-                        pass
-                    else:
-                        if subfield != '':
-                            output.values['LO'].add(subfield)
+                    if len(subfield) % 3 == 0:
+                        for s in [subfield[i:i+3] for i in range(0, len(subfield), 3)]:
+                            try: s = languages.get(s, '')
+                            except: pass
+                            else:
+                                if s != '':
+                                    output.values['LO'].add(s)
                 for subfield in field.get_subfields('k'):
-                    try:
-                        subfield = languages.get(subfield, '')
-                    except:
-                        pass
-                    else:
-                        if subfield != '':
-                            output.values['LI'].add(subfield)
+                    if len(subfield) % 3 == 0:
+                        for s in [subfield[i:i+3] for i in range(0, len(subfield), 3)]:
+                            try: s = languages.get(s, '')
+                            except: pass
+                            else:
+                                if s != '':
+                                    output.values['LI'].add(s)
 
             # 047
             # MF    # Musical form
@@ -955,10 +960,17 @@ class Converter(object):
                     subfield = quick_clean(re.sub(r'[.\[\]?:;]', '', re.sub(r'\[sic\.?\]', '', subfield, flags=re.IGNORECASE)))
                     if subfield != '':
                         output.values['PU'].add(subfield)
+                        if RE_YEAR_POST_1500.search(subfield) is not None:
+                            yearlist = RE_YEAR_POST_1500.findall(subfield)
+                            year = RE_YEAR_POST_1500.search(yearlist[-1]).group(1)
+                            if year != '' and len(output.values['PD']) == 0:
+                                output.values['PD'].add(year)
+                        '''
                         subfield = re.sub(r'[^0-9]', '', subfield)
                         # Publication date in 260/264 is only used if no date found in 008
                         if subfield != '' and len(subfield) >= 4 and len(output.values['PD']) == 0:
                             output.values['PD'].add(subfield[0:4])
+                        '''
 
             # 263
             # PJ    # Projected publication date
@@ -1118,6 +1130,14 @@ class Converter(object):
                     abstract = add_string(subfield, abstract, ' ')
                 output.values['AB'].add(abstract)
 
+            # 546
+            # NG    # Language notes
+            for field in record.get_fields('546'):
+                notes = ''
+                for subfield in field.get_subfields('3', 'a', 'b'):
+                    notes = add_string(subfield, notes, ' ')
+                output.values['NG'].add(notes)
+
             # 561
             # PV    # Provenance
             for field in record.get_fields('561'):
@@ -1220,7 +1240,10 @@ class Converter(object):
                     for subfield in field.get_subfields('b'):
                         subfield = expand_place_abbreviations(subfield, output.values['PC'])
                         place = add_string(subfield, place, '--')
-                        output.values['CF'].add(subfield)
+                        if place in ['England', 'Ireland', 'Northern Ireland', 'Scotland', 'Wales']:
+                            output.values['CC'].add(subfield)
+                        else:
+                            output.values['CF'].add(subfield)
                     # $c - Intermediate political jurisdiction (R)
                     for subfield in field.get_subfields('c'):
                         subfield = expand_place_abbreviations(subfield, output.values['PC'])
@@ -1788,16 +1811,16 @@ class Converter(object):
             # Write record to output file
 
             if self.profile == 'F':
-                records.write('"' + '","'.join((' ; '.join(str(p) for p in output.values[tag]).strip())
+                records.write('"' + '","'.join((' ; '.join(sort_quotes(str(p)) for p in output.values[tag]).strip())
                                                for tag in output.values) + '"\n')
 
             elif self.profile == 'M':
                 if 'STA' not in output.values:
-                    records.write('"' + '","'.join((' ; '.join(str(p) for p in output.values[tag]).strip())
+                    records.write('"' + '","'.join((' ; '.join(sort_quotes(str(p)) for p in output.values[tag]).strip())
                                                    for tag in sorted(output.values)) + '"\n')
                 elif not (any(s in ''.join(output.values['STA']).lower() for s in
                             ['deleted', 'suppressed', 'prepublication'])) and len(output.values['001']) > 0:
-                    records.write('"' + '","'.join((' ; '.join(str(p) for p in output.values[tag]).strip())
+                    records.write('"' + '","'.join((' ; '.join(sort_quotes(str(p)) for p in output.values[tag]).strip())
                                                    for tag in sorted(output.values) if tag != 'STA') + '"\n')
 
             elif self.profile == 'N':
@@ -1816,7 +1839,7 @@ class Converter(object):
                     output_string = '"'
                     for v in self.output_fields.values:
                         if v in output.values and self.output_fields.values[v]:
-                            try: output_string += '|'.join(p for p in sorted(output.values[v]) if p != '') + '","'
+                            try: output_string += '|'.join(sort_quotes(str(p)) for p in sorted(output.values[v]) if p != '') + '","'
                             except: print('\nError in newspaper records: {}\n{}\n'.format(v, str(sys.exc_info())))
                     output_string += '\n'
                     output_string = output_string.replace(',"\n', '\n')
@@ -1843,22 +1866,22 @@ class Converter(object):
                                                 if item[i] != '': name += ', ' + item[i]
                                             if item[2] != '': name = name + ' [' + item[2] + ']'
                                             s = add_string(name, s, ' ; ')
-                                    output_string += s + '","'
+                                    output_string += sort_quotes(s) + '","'
                                 elif v == 'SU':
                                     s = ''
                                     for item in output.values['SU']:
                                         if item[0] != '': topic = str(item[0])
                                         s = add_string(topic, s, ' ; ')
-                                    output_string += s + '","'
+                                    output_string += sort_quotes(s) + '","'
                                 elif v == 'TV':
                                     try:
-                                        output_string += ' ; '.join(p for p in sorted(output.values['TV'])
+                                        output_string += ' ; '.join(sort_quotes(str(p)) for p in sorted(output.values['TV'])
                                                                     if (p != '' and p not in output.values['TT'])) + '","'
                                     except:
                                         print('\nError [please report code 003 to VM]: {}\n'.format(str(sys.exc_info())))
                                 else:
                                     try:
-                                        output_string += ' ; '.join(p for p in sorted(output.values[v]) if p != '') + '","'
+                                        output_string += ' ; '.join(sort_quotes(str(p)) for p in sorted(output.values[v]) if p != '') + '","'
                                     except:
                                         print('\nError in records: {}\n{}\n'.format(v, str(sys.exc_info())))
 
@@ -1871,18 +1894,18 @@ class Converter(object):
                         for item in output.values['AN']:
                             if item[0] != '':
                                 output_string = '"'
-                                output_string += item[0] + '","'  # Name
-                                if item[1] != '': output_string += item[1]  # Dates associated with name
+                                output_string += sort_quotes(item[0]) + '","'  # Name
+                                if item[1] != '': output_string += sort_quotes(item[1])  # Dates associated with name
                                 output_string += '","'
-                                if item[2] != '': output_string += item[2]  # Type of name
+                                if item[2] != '': output_string += sort_quotes(item[2])  # Type of name
                                 output_string += '","'
-                                if item[3] != '': output_string += item[3]  # Name role
+                                if item[3] != '': output_string += sort_quotes(item[3])  # Name role
                                 output_string += '","'
                                 if (self.bnb or self.iams) and self.output_fields.values['II']:
-                                    if item[4] != '': output_string += item[4]  # ISNI
+                                    if item[4] != '': output_string += sort_quotes(item[4])  # ISNI
                                     output_string += '","'
                                 if (self.bnb or self.iams) and self.output_fields.values['VF']:
-                                    if item[5] != '': output_string += item[5]  # VIAF
+                                    if item[5] != '': output_string += sort_quotes(item[5])  # VIAF
                                     output_string += '","'
                                 s = ''
                                 for item2 in output.values['AN']:
@@ -1892,7 +1915,7 @@ class Converter(object):
                                             if item2[i] != '': name += ', ' + item2[i]
                                         if item2[2] != '': name = name + ' [' + item2[2] + ']'
                                         s = add_string(name, s, ' ; ')
-                                output_string += s + '","'
+                                output_string += sort_quotes(s) + '","'
                                 for v in self.output_fields.values:
                                     if v in output.values and self.output_fields.values[v]:
                                         if v == 'SU':
@@ -1900,16 +1923,16 @@ class Converter(object):
                                             for item3 in output.values['SU']:
                                                 if item3[0] != '': topic = str(item3[0])
                                                 s = add_string(topic, s, ' ; ')
-                                            output_string += s + '","'
+                                            output_string += sort_quotes(s) + '","'
                                         elif v == 'TV':
                                             try:
-                                                output_string += ' ; '.join(p for p in sorted(output.values['TV'])
+                                                output_string += ' ; '.join(sort_quotes(str(p)) for p in sorted(output.values['TV'])
                                                                             if (p != '' and p not in output.values['TT'])) + '","'
                                             except:
                                                 print('\nError [please report code 004 to VM]: {}\n'.format(str(sys.exc_info())))
                                         elif v not in ['AN', 'AA', 'AD', 'AT', 'AR', 'II', 'VF']:
                                             try:
-                                                output_string += ' ; '.join(p for p in sorted(output.values[v]) if p != '') + '","'
+                                                output_string += ' ; '.join(sort_quotes(str(p)) for p in sorted(output.values[v]) if p != '') + '","'
                                             except:
                                                 print('\nError in names: {}\n{}\n'.format(v, str(sys.exc_info())))
                                 output_string += '\n'
@@ -1918,8 +1941,8 @@ class Converter(object):
 
                     if self.file_titles:
                         for item in output.values['TV']:
-                            output_string = '"' + item + '","'
-                            output_string += ' ; '.join(p for p in sorted(output.values['TV']) if p != '' and p != item) + '","'
+                            output_string = '"' + sort_quotes(item) + '","'
+                            output_string += ' ; '.join(sort_quotes(str(p)) for p in sorted(output.values['TV']) if p != '' and p != item) + '","'
                             for v in self.output_fields.values:
                                 if v in output.values and self.output_fields.values[v]:
                                     if v == 'AN':
@@ -1931,16 +1954,16 @@ class Converter(object):
                                                     if item2[i] != '': name += ', ' + item2[i]
                                                 if item2[2] != '': name = name + ' [' + item2[2] + ']'
                                                 s = add_string(name, s, ' ; ')
-                                        output_string += s + '","'
+                                        output_string += sort_quotes(s) + '","'
                                     elif v == 'SU':
                                         s = ''
                                         for item3 in output.values['SU']:
                                             if item3[0] != '': topic = str(item3[0])
                                             s = add_string(topic, s, ' ; ')
-                                        output_string += s + '","'
+                                        output_string += sort_quotes(s) + '","'
                                     elif v not in ['TK', 'TT', 'TU', 'TV']:
                                         try:
-                                            output_string += ' ; '.join(p for p in sorted(output.values[v]) if p != '') + '","'
+                                            output_string += ' ; '.join(sort_quotes(str(p)) for p in sorted(output.values[v]) if p != '') + '","'
                                         except:
                                             print('\nError in titles: {}\n{}\n'.format(v, str(sys.exc_info())))
                             output_string += '\n'
@@ -1950,8 +1973,8 @@ class Converter(object):
                     if self.file_topics:
                         for item in output.values['SU']:
                             if item[0] != '':
-                                output_string = '"' + item[0] + '","'
-                                if item[1] != '': output_string += item[1]
+                                output_string = '"' + sort_quotes(item[0]) + '","'
+                                if item[1] != '': output_string += sort_quotes(item[1])
                                 output_string += '","'
                                 for v in self.output_fields.values:
                                     if v in output.values and self.output_fields.values[v]:
@@ -1964,16 +1987,16 @@ class Converter(object):
                                                         if item2[i] != '': name += ', ' + item2[i]
                                                     if item2[2] != '': name = name + ' [' + item2[2] + ']'
                                                     s = add_string(name, s, ' ; ')
-                                            output_string += s + '","'
+                                            output_string += sort_quotes(s) + '","'
                                         elif v == 'TV':
                                             try:
-                                                output_string += ' ; '.join(p for p in sorted(output.values['TV'])
+                                                output_string += ' ; '.join(sort_quotes(str(p)) for p in sorted(output.values['TV'])
                                                                             if (p != '' and p not in output.values['TT'])) + '","'
                                             except:
                                                 print('\nError [please report code 005 to VM]: {}\n'.format(str(sys.exc_info())))
                                         elif v not in ['SU']:
                                             try:
-                                                output_string += ' ; '.join(p for p in sorted(output.values[v]) if p != '') + '","'
+                                                output_string += ' ; '.join(sort_quotes(str(p)) for p in sorted(output.values[v]) if p != '') + '","'
                                             except:
                                                 print('\nError in topics: {}\n{}\n'.format(v, str(sys.exc_info())))
                                 output_string += '\n'
@@ -1983,7 +2006,7 @@ class Converter(object):
                     if self.file_classification:
                         for item in output.values['DW']:
                             if item != '':
-                                output_string = '"' + str(item) + '","'
+                                output_string = '"' + sort_quotes(str(item)) + '","'
                                 for v in self.output_fields.values:
                                     if v in output.values and self.output_fields.values[v]:
                                         if v == 'AN':
@@ -1995,22 +2018,22 @@ class Converter(object):
                                                         if item2[i] != '': name += ', ' + item2[i]
                                                     if item2[2] != '': name = name + ' [' + item2[2] + ']'
                                                     s = add_string(name, s, ' ; ')
-                                            output_string += s + '","'
+                                            output_string += sort_quotes(s) + '","'
                                         elif v == 'SU':
                                             s = ''
                                             for item3 in output.values['SU']:
                                                 if item3[0] != '': topic = str(item3[0])
                                                 s = add_string(topic, s, ' ; ')
-                                            output_string += s + '","'
+                                            output_string += sort_quotes(s) + '","'
                                         elif v == 'TV':
                                             try:
-                                                output_string += ' ; '.join(p for p in sorted(output.values['TV'])
+                                                output_string += ' ; '.join(sort_quotes(str(p)) for p in sorted(output.values['TV'])
                                                                             if (p != '' and p not in output.values['TT'])) + '","'
                                             except:
                                                 print('\nError [please report code 006 to VM]: {}\n'.format(str(sys.exc_info())))
                                         elif v not in ['DW']:
                                             try:
-                                                output_string += ' ; '.join(p for p in sorted(output.values[v]) if p != '') + '","'
+                                                output_string += ' ; '.join(sort_quotes(str(p)) for p in sorted(output.values[v]) if p != '') + '","'
                                             except:
                                                 print('\nError in classification: {}\n{}\n'.format(v, str(sys.exc_info())))
                                 output_string += '\n'
